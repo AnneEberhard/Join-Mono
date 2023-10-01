@@ -10,15 +10,15 @@ const button = document.querySelector(".fly-in-button");
 const overlay = document.querySelector(".overlay");
 
 /**
- * this delays the creation of a new promise
+ * this delays the following code bei ms milliseconds
  * @param {}  - no param
  */
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/** CHECK THIS
- * adding eventlistenter
+/**
+ * when form is submitted, new registered user is added and login window is opened again
  * @param {}  - no param
  */
 form.addEventListener("submit", async (event) => {
@@ -33,7 +33,7 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-/** CHECK THIS
+/** 
  * this function adds a new user
  * @param {}  - no param
  */
@@ -62,7 +62,7 @@ async function addUser() {
   }
 }
 
-/** CHECK THIS
+/**
  * resets the form
  * @param {}  - no param
  */

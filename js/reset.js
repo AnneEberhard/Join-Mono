@@ -3,15 +3,15 @@ const button = document.querySelector(".fly-in-button");
 const overlay = document.querySelector(".overlay");
 
 /**
- * this delays the creation of a new promise
+ * this delays the following code bei ms milliseconds
  * @param {}  - no param
  */
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/** CHECK THIS
- * adding eventlistenter
+/**
+ * when form is submitted, password reset is initated
  * @param {}  - no param
  */
 form.addEventListener("submit", async (event) => {
@@ -26,8 +26,8 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
-/** CHECK THIS
- * this resets the password
+/**
+ * this resets the password if two identical words are entered in the respective fields
  * @param {}  - no param
  */
 async function resetPassword() {

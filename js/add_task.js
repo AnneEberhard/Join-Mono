@@ -169,6 +169,7 @@ function assignContact(i, mode) {
 }
 
 
+
 /**
  * this function clears the box of an assigned contact and sets the i. value of assignedContactsStatus[] to false
  * @param {number} i - index of the JSON contacts 
@@ -194,6 +195,21 @@ function updateAssignedContacts() {
     if (assignedStatus == true) {
       assignedContacts.push(contact);
     }
+  }
+  displayAssignedContact();
+}
+
+/**
+ * this function adds the assigned contact in color circles
+ * @param - no parameter
+ */
+function displayAssignedContact() {
+  const displaySelectedContacts = document.getElementById('displaySelectedContacts');
+  displaySelectedContacts.innerHTML = '';
+  for (let i = 0; i < assignedContacts.length; i++) {
+    const contactAcronym = assignedContacts[i].acronym;
+    const contactColor = assignedContacts[i].color;
+    displaySelectedContacts.innerHTML += `<div class="circleAcronym" style="background-color: ${contactColor};">${contactAcronym}</div>`;
   }
 }
 

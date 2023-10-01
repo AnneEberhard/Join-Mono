@@ -3,15 +3,15 @@ const button = document.querySelector(".fly-in-button");
 const overlay = document.querySelector(".overlay");
 
 /**
- * this delays the creation of a new promise
+ * this delays the following code bei ms milliseconds
  * @param {}  - no param
  */
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-/** CHECK THIS
- * adding eventlistenter
+/**
+ * when form is submitted, starts code for sending mail for resetting password
  * @param {}  - no param
  */
 form.addEventListener("submit", async (event) => {
@@ -26,7 +26,7 @@ form.addEventListener("submit", async (event) => {
 });
 
 
-/** CHECK THIS
+/**
  * send mail
  * @param {}  - no param
  */
