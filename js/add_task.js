@@ -6,8 +6,8 @@
 //these come from server and will be saved at the end
 let tasks = [];
 let contacts = [];
-let categories = [
-  {name: 'New category', colorCode: 0}];
+//let categories = [{name: 'New category', colorCode: 0}];
+let categories = [];
 let freeColors = [];
 
 //these are needed to fill task
@@ -33,7 +33,6 @@ let column;
  * @param - no parameter
  */
 async function initTask() {
-  saveTask();
   checkLogIn();
   await includeHTML();
   await loadItems();

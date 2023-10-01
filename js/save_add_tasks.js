@@ -138,10 +138,12 @@ async function saveTask() {
   await setItem("savedFreeColors", JSON.stringify(freeColors));
 }
 
+
 /**
  * this function saves only the savedCategories to the backend and is used when a category is deleted
  * @param - no param
  */
 async function saveOnlyCategories() {
+  debugger;
   await setItem("savedCategories", JSON.stringify(categories));
 }

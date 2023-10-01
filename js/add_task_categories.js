@@ -3,7 +3,6 @@
 //for saving see save_add_tasks.js
 //for backend see storage.js
 
-
 /**
  * this function begins the rendering of the categories
  * @param - no parameter
@@ -14,10 +13,8 @@ function renderCategories() {
   createFreecolors();
   renderCategoryOptions();
   resetCategories();
-  document.getElementById('categoryAlert').innerHTML ='';
-
+  document.getElementById("categoryAlert").innerHTML = "";
 }
-
 
 /**
  * this function returns the main template for categories
@@ -43,7 +40,6 @@ function templateCategory() {
   return templateCategory;
 }
 
-
 /**
  * this function renders the options for the dropdown menu of categories
  * @param - no parameter
@@ -53,30 +49,25 @@ function renderCategoryOptions() {
   for (let i = 0; i < categories.length; i++) {
     const category = categories[i]["name"];
     const colorCode = categories[i]["colorCode"];
-    if (i == 0) {
-      document.getElementById("categoryOptions").innerHTML +=
-        templateCategoryOptionsFirst(category, i);
-    } else {
-      document.getElementById("categoryOptions").innerHTML +=
-        templateCategoryOptionsFurther(category, i, colorCode);
-    }
+    document.getElementById("categoryOptions").innerHTML +=
+      templateCategoryOptionsFurther(category, i, colorCode);
   }
+  document.getElementById("categoryOptions").innerHTML +=
+    templateCategoryOptionsFirst();
 }
-
 
 /**
  * this function returns the first line for new category
  * @param {string} category - first item from the JSON categories and set to 'New Category'
  * * @param {number} i - index of the JSON categories, in this case set to 0
  */
-function templateCategoryOptionsFirst(category, i) {
+function templateCategoryOptionsFirst() {
   let templateCategoryOptionsFirst = /*html*/ `  
-    <div id="category${i}" class="option" onclick="renderAddNewCategory()">
-    <div>${category}</div></div>
+    <div id="category0" class="option" onclick="renderAddNewCategory()">
+    <div>Add New Category</div></div>
   </div>`;
   return templateCategoryOptionsFirst;
 }
-
 
 /**
  * this function returns the template for further lines of category option
@@ -96,21 +87,18 @@ function templateCategoryOptionsFurther(category, i, colorCode) {
   return templateCategoryOptionsFurther;
 }
 
-
-
 /**
  * this function ensures the onlick-Funktion of closing the options isn't carried out
  * @param {event} - no parameter
  */
 function handleCategoriesOptionsClick(event) {
-  event.stopPropagation(); 
-  if (document.getElementById('addCategory')) {
+  event.stopPropagation();
+  if (document.getElementById("addCategory")) {
     checkIfNewCategoryReady();
   } else {
-    toggleOptions('categoryOptions');
+    toggleOptions("categoryOptions");
   }
 }
-
 
 /**
  * this function toggles the dropdown menu of categories and contacts
@@ -121,7 +109,6 @@ function toggleOptions(id) {
   optionsDiv.classList.toggle("hidden");
 }
 
-
 /**
  * this function ensures the onlick Funktion is not forwarded to others
  * @param {event} - on click
@@ -131,18 +118,16 @@ function closeOptionsOnClick(event, mode) {
   event.stopPropagation();
 }
 
-
 /**
  * this function closes the dropdown menu of categories and contacts
  * @param {string} id - id of either categories or contacts
  */
 function closeOptions(mode) {
-  if (mode == 'Add') {
-    document.getElementById('categoryOptions').classList.add("hidden");
-  }  
+  if (mode == "Add") {
+    document.getElementById("categoryOptions").classList.add("hidden");
+  }
   document.getElementById(`contactsOptions${mode}`).classList.add("hidden");
 }
-
 
 /**
  * this function selects the clicked-on category, writes it into the input field and adds the respective color dot
@@ -158,7 +143,6 @@ function selectCategory(i) {
   toggleOptions("categoryOptions");
 }
 
-
 /**
  * this function resets NewCategories and respective color code to empty
  * @param - no parameter
@@ -168,26 +152,33 @@ function resetCategories() {
   newCategoryColor = "";
 }
 
-
 /**
  * this function renders the line for adding a New Category and adds the color dots to choose from
  * @param - no parameter
  */
 function renderAddNewCategory() {
   document.getElementById("categorySelection").value = "";
-  document.getElementById("categorySelection").setAttribute("placeholder", "New category Name");
-  document.getElementById("categorySelection").setAttribute("onkeyup", "checkIfNewCategoryReady()");
+  document
+    .getElementById("categorySelection")
+    .setAttribute("placeholder", "New category Name");
+  document
+    .getElementById("categorySelection")
+    .setAttribute("onkeyup", "checkIfNewCategoryReady()");
   document.getElementById("categorySelectionCircle").innerHTML = "";
-  document.getElementById("categorySelectionLeft").innerHTML = templateCategorySelectionLeft();
+  document.getElementById("categorySelectionLeft").innerHTML =
+    templateCategorySelectionLeft();
   document.getElementById("dividerSmall").innerHTML = templatedividerSmall();
-  document.getElementById("categorySelectionRight").innerHTML = templateCategorySelectionRight();
-  document.getElementById("newCategoryDotsContainer").innerHTML = `<div id="newCategoryDots"></div>`;
+  document.getElementById("categorySelectionRight").innerHTML =
+    templateCategorySelectionRight();
+  document.getElementById(
+    "newCategoryDotsContainer"
+  ).innerHTML = `<div id="newCategoryDots"></div>`;
   for (let i = 0; i < freeColors.length; i++) {
-    document.getElementById("newCategoryDots").innerHTML += templateNewCategoryDots(i);
+    document.getElementById("newCategoryDots").innerHTML +=
+      templateNewCategoryDots(i);
   }
   toggleOptions("categoryOptions");
 }
-
 
 /**
  * this function returns the HTML code for the cancel button in the adding New Category line
@@ -199,7 +190,6 @@ function templateCategorySelectionLeft() {
   return templateCategorySelectionLeft;
 }
 
-
 /**
  * this function returns the HTML code for the small divider in the adding New Category line
  * @param - no parameter
@@ -208,7 +198,6 @@ function templatedividerSmall() {
   let templatedividerSmall = `<div class="dividerSmall"></div>`;
   return templatedividerSmall;
 }
-
 
 /**
  * this function returns the HTML code for the checkmark in the adding New Category line
@@ -219,7 +208,6 @@ function templateCategorySelectionRight() {
     <img src="assets/img/done-30.png" class="iconsNewCategory" id="addCategory"/>`;
   return templateCategorySelectionRight;
 }
-
 
 /**
  * this function returns the HTML code for the color dots to choose from beneath the New Category line
@@ -232,13 +220,11 @@ function templateNewCategoryDots(i) {
   return templateNewCategoryDots;
 }
 
-
 /**
  * this function checks if a category name has been entered plus a color code selected and then enables the click function addCategory
  * @param - no parameter
  */
 function checkIfNewCategoryReady() {
-  console.log('check');
   newCategoryName = document.getElementById("categorySelection").value;
   let categoryExists = checkIfNewcategoryExists(newCategoryName);
   const addCategoryButton = document.getElementById("addCategory");
@@ -247,15 +233,23 @@ function checkIfNewCategoryReady() {
     addCategoryButton.addEventListener("click", alertNewColor);
     addCategoryButton.classList.add("hover");
   }
-  if (newCategoryName !== "" && newCategoryColor !== "" && categoryExists === false) {
+  if (
+    newCategoryName !== "" &&
+    newCategoryColor !== "" &&
+    categoryExists === false
+  ) {
     addCategoryButton.addEventListener("click", addCategory);
     addCategoryButton.classList.add("hover");
   }
 }
 
-
+/**
+ * this function writes an alert if no new color has been chosen
+ * @param - no parameter
+ */
 function alertNewColor() {
-  document.getElementById('categoryAlert').innerHTML ='Please choose a color before saving';
+  document.getElementById("categoryAlert").innerHTML =
+    "Please choose a color before saving";
 }
 
 /**
@@ -263,15 +257,17 @@ function alertNewColor() {
  * @param {string} newCategoryName - is the entered name for a potential new category
  */
 function checkIfNewcategoryExists(newCategoryName) {
-
-  if (categories.find(  (element) => element.name.toUpperCase() == newCategoryName.toUpperCase())) {
-    document.getElementById('categoryAlert').innerHTML ='This category already exists, please choose from Dropdown Menu';
+  if (
+    categories.find(
+      (element) => element.name.toUpperCase() == newCategoryName.toUpperCase()
+    )
+  ) {
+    document.getElementById("categoryAlert").innerHTML =
+      "This category already exists, please choose from Dropdown Menu";
     return true;
-  } 
-return false;
+  }
+  return false;
 }
-
-
 
 /**
  * this function saves 6 random colorCodes to choose from of them in the array freeColors
@@ -284,7 +280,6 @@ function createFreecolors() {
     freeColors.push(freeColorCode);
   }
 }
-
 
 /**
  * this function creates random colors in hexcode
@@ -299,7 +294,6 @@ function getRandomColor() {
   return color;
 }
 
-
 /**
  * this function highlights the selected free color and checks if the button to add can bei disabled
  * @param {number} i - index of the array freeColors
@@ -312,7 +306,6 @@ function addColor(i) {
   document.getElementById(`newCategoryDot${i}`).classList.add("selected");
   checkIfNewCategoryReady();
 }
-
 
 /**
  * this function adds the new category with its respective color to the JSON categories and removes the selected color from the array freeColors
@@ -332,29 +325,29 @@ function addCategory() {
   renderCategories();
   selectCategory(lastItem);
   toggleOptions("categoryOptions");
+  saveOnlyCategories();
 }
 
-
 /**
- * this function checks if an entered category name is part of the list 
+ * this function checks if an entered category name is part of the list
  * @param - no parameter
  */
 function pickExistingCategory(event) {
-  const disallowedKeys = ['Backspace', 'Delete'];
+  const disallowedKeys = ["Backspace", "Delete"];
   if (!disallowedKeys.includes(event.key)) {
-    let enteredCategoryName = document.getElementById("categorySelection").value;
-  
+    let enteredCategoryName =
+      document.getElementById("categorySelection").value;
+
     for (let i = 0; i < categories.length; i++) {
-      let existingCategory = categories[i]['name'];
+      let existingCategory = categories[i]["name"];
       existingCategory = existingCategory.slice(0, -1);
       if (enteredCategoryName === existingCategory) {
-        document.getElementById("categorySelection").value ='';
+        document.getElementById("categorySelection").value = "";
         writeExistingCategory(i);
       }
     }
   }
 }
-
 
 /**
  * this function adds the respective color dot to  the written-in, existing category; due to onkeydown a letter needs to be sliced
