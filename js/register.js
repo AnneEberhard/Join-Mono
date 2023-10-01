@@ -63,7 +63,7 @@ async function addUser() {
 }
 
 /** CHECK THIS
- * aresets the form
+ * resets the form
  * @param {}  - no param
  */
 function resetForm() {
