@@ -1,3 +1,7 @@
+/**
+ * this function opens add Task container on the board
+ * @param - no parameter
+ */
 function openAddTask(column) {
     localStorage.setItem('column', column);
     if (isMobileDevice()) {
@@ -9,6 +13,10 @@ function openAddTask(column) {
     }
 }
 
+/**
+ * this function closes add Task container on the board
+ * @param - no parameter
+ */
 function closeAddTask() {
     document.getElementById('addTaskBoard').classList.add('d-none');
     document.getElementById('addTaskBoardContainer').classList.remove('slideOut');

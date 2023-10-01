@@ -1,8 +1,8 @@
 let currentHighlightedDiv = null;
 
 /**
- * 
- * This function renders the Contact List.
+ * CHECK THIS
+ * This function renders the contact list.
  */
 
 function renderContactList() {

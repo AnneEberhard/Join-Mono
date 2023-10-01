@@ -7,7 +7,7 @@ async function renderBoard() {
 
 /**
  * 
- * load alle Datas from Backend, delete tasks columns and build new Cards out of loaded Datas
+ * load alle data from backend, delete tasks columns and build new Cards out of loaded Datas
  */
 async function renderBoardCards() {
     await loadItems();
@@ -18,7 +18,7 @@ async function renderBoardCards() {
     fillEmptyColumns();
 }
 
-/** delete tasks Columns when refreshing Board */
+/** delete tasks columns when refreshing Board */
 async function deleteBoard() {
     document.getElementById('board_container_bottom_todo').innerHTML = "";
     document.getElementById('board_container_bottom_inprogress').innerHTML = "";
@@ -50,8 +50,7 @@ async function createBoardCard(id) {
     createAssignmentIcons(assignedCard, idContainerAssignements);
 }
 
-/**
- * 
+/**CHECK THIS
  * 
  * @param {} category passes category of the task
  * @returns BgColor for the category
@@ -69,11 +68,9 @@ function determineColorCategory(category) {
 
 /**
  * create template of a taskCard
- * 
  * @param {*} attributes passes attributes of the task to create the template of this taskCard
  */
 function renderBoardCard(categoryCard, titleCard, descriptionCard, ID, prioCard, cats, categoryColorCode) {
-
     let board_todo = document.getElementById(`${cats}`);
     board_todo.innerHTML += /*html*/`
         <div id="${ID}" draggable="true" ondragstart="startDragging(${ID})" 
@@ -95,15 +92,17 @@ function renderBoardCard(categoryCard, titleCard, descriptionCard, ID, prioCard,
                     </div>                            
                 </div>
             </div>
-        </div> 
-    `
+        </div> `
     if(isMobileDevice()){
     renderMoveBtns(cats, ID);
     }
 }
 
 
-
+/**
+ * create template of a taskCard
+ * @param {*} attributes passes attributes of the task to create the template of this taskCard
+ */
 function renderMoveBtns(cats, id){    
         document.getElementById(`${id}`).innerHTML += /*html*/`
             <div class="lastCategory" onclick="moveToLastCat(${cats}, ${id}); stopPropagation(event)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg></div>
@@ -120,12 +119,19 @@ function renderMoveBtns(cats, id){
         }
 }
 
-
+/**
+ * stops passing on click
+ * @param {*} event 
+ */
 function stopPropagation(event) {
     event.stopPropagation();
 }
 
-
+/**
+ * assigns task to previous category 
+ * @param {*} column name of current category column
+ * @param {*} id index of the task
+ */
 function moveToLastCat(column, id){
     if(column.id == "board_container_bottom_inprogress"){
         newColumn = "board_container_bottom_todo"
@@ -139,7 +145,11 @@ function moveToLastCat(column, id){
     changeTaskColumn(id, newColumn)
 }
 
-
+/**
+ * assigns task to next category 
+ * @param {*} column name of current category column
+ * @param {*} id index of the task
+ */
 function moveToNextCat(column, id){
     if(column.id == "board_container_bottom_inprogress"){
         newColumn = "board_container_bottom_awaitingfeedback"
@@ -153,12 +163,9 @@ function moveToNextCat(column, id){
     changeTaskColumn(id, newColumn)
 }
 
-// function renderMoveBtns(){
-
-// }
 
 /**
- * creates progresbar for subtasks --> 138 is width of the complete Progressbar
+ * creates progressbar for subtasks --> 138 is width of the complete progressbar
  * @param {*} subtaskCard Array with all subtasks of the task
  * @param {*} id index of the task
  */
@@ -172,7 +179,11 @@ function createProgressbar(subtaskCard, id) {
     renderProgressText(done, tasksNumber, id);
 }
 
-
+/**CHECK THIS
+ * counts progress to done
+ * @param {*} subtaskCard Array with all subtasks of the task
+ * @returns count
+ */
 function countDoneSubtasks(subtaskCard) {
     let counter = 0;
     for (let s = 0; s < subtaskCard.length; s++) {
@@ -230,21 +241,19 @@ function createAssignmentIcons(assignedCard, idContainer) {
 
 
 /**
- * compare if assignedUser is an contactand creates the IconCircle
+ * compare if assignedUser is an contact and creates the IconCircle
  * @param {*} assignedUser user who is working on task  
  * @param {*} contact contact from the contact list
  * @param {*} idContainer 
  */
 function renderAssignmentIcons(assignedUser, contact, idContainer) {
     if (assignedUser === contact.user_name) {
-
         let acronym = createAcronym(assignedUser);
         let newCircle = document.createElement('div');
         newCircle.classList.add('board_Icons_Username');
         newCircle.style.backgroundColor = getColor(assignedUser);
         newCircle.innerHTML = acronym;
         newCircle.title = assignedUser;
-
         let username = document.getElementById(idContainer);
         username.appendChild(newCircle);
     }
@@ -259,7 +268,6 @@ function renderAssignmentIcons(assignedUser, contact, idContainer) {
 function getColor(assignedUser) {
     for (let i = 0; i < contacts.length; i++) {
         const contact = contacts[i];
-
         if (contact.user_name === assignedUser) {
             return contact.color
         }
@@ -285,7 +293,9 @@ function searchTasksOnBoard() {
     }
 }
 
-
+/**
+ * searching function for the mobile version, to show task who hast the searched word in title 
+ */
 function searchTasksOnBoardMobile() {
     let searchedTask = document.getElementById('board_input_mobile').value.toUpperCase();
     let searchingElements = document.getElementsByClassName('board_task_container_title');
@@ -302,11 +312,10 @@ function searchTasksOnBoardMobile() {
 }
 
 
-/**
+/**CHECK THIS
  * Drag and Drop functions
  * 
  */
-
 function startDragging(id) {
     currentDraggedElement = id;
     let draggedCard = document.getElementById(currentDraggedElement);
@@ -353,13 +362,12 @@ function removeHighlight(event) {
  * add "NoTasks Container" to empty columns
  */
 function fillEmptyColumns() {
-    var columnsToCheck = [
+    let columnsToCheck = [
         "board_container_bottom_todo",
         "board_container_bottom_inprogress",
         "board_container_bottom_awaitingfeedback",
         "board_container_bottom_done"
     ];
-
     for (let c = 0; c < columnsToCheck.length; c++) {
         const column = columnsToCheck[c];
         let isEmpty = isDivEmpty(column)
@@ -399,7 +407,9 @@ function isMobileDevice() {
  */
 window.addEventListener('resize', handleScreenResize);
 
-
+/** CHECK THIS
+ * to handle screen resizing
+ */
 function handleScreenResize() {
     if (window.innerWidth < 900 && window.location.pathname === '/board.html') {
         renderBoard();

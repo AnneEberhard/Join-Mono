@@ -17,10 +17,8 @@ let contacts = [
 let editingContact;
 
 /**
- * This function is used to first load the Templates, then it will load the Contacts from
- * the Backend.
- * After its loaded from the Backend. The Contactlist is getting rendered.
- *
+ * This function is used to first load the templates, then it will load the contacts from the backend.
+ * After it's loaded from the backend, the contact list is getting rendered.
  */
 async function init() {
   checkLogIn();
@@ -29,11 +27,8 @@ async function init() {
 }
 
 /**
- *
- * This function takes the ID of the Modal as a paramter and closes it.
- * @param {string} - id of the Modal
- *
- *
+ * This function closes the open modal
+ * @param {string} - id of the modal
  */
 function closeModal(id) {
   let modal = document.getElementById(id);
@@ -42,11 +37,8 @@ function closeModal(id) {
 }
 
 /**
- *
- * This function takes the ID of the Modal as a paramter and opens it.
- * @param {string} - id of the Modal
- *
- *
+ * This function opens a chosen modal
+ * @param {string} - id of the modal
  */
 function openModal(id) {
   let modal = document.getElementById(id);
@@ -55,12 +47,9 @@ function openModal(id) {
 }
 
 /**
- *
  * This function calls another function that resets the input of the user
  * and closes the Modal with the given ID.
- * @param {string} - id of the Modal
- *
- *
+ * @param {string} - id of the modal
  */
 function cancelContact(id) {
   resetForm();
@@ -68,11 +57,8 @@ function cancelContact(id) {
 }
 
 /**
- *
  * This function creates the Contact.
- * @param {string} - id of the Modal
- *
- *
+ * @param {string} - id of the modal
  */
 async function createContact(id) {
   let acronym = createAcronym(user_name.value);
@@ -91,9 +77,7 @@ async function createContact(id) {
 }
 
 /**
- *
- * This function loads the Contacts from the Backend.
- *
+ * This function loads contacts from the backend.
  */
 async function loadContacts() {
   try {
@@ -104,10 +88,7 @@ async function loadContacts() {
 }
 
 /**
- *
  * This help function resets the User Input.
- *
- *
  */
 function resetForm() {
   user_name.value = "";
@@ -116,11 +97,8 @@ function resetForm() {
 }
 
 /**
- *
- * This function renders the Contact Details in the render Element ID.
- * @param {string} - the contact that should be rendered is taken as a parameter.
- *
- *
+ * This function renders the Contact Details in the render element ID.
+ * @param {string} - the contact to be rendered
  */
 function renderContact(username) {
   let contact = findContactByUserName(username);
@@ -134,26 +112,20 @@ function renderContact(username) {
 }
 
 /**
- *
- * This help function finds the wanted contact.
- * @param {string} - @param {string} - the contact that should be found is taken as a parameter.
- *
- *
+ * This help function finds the wanted contact
+ * @param {string} - the contact that to be found
  */
 function findContactByUserName(userName) {
   return contacts.find((contact) => contact.user_name === userName);
 }
 
 /**
- *
- * This function edits the Contact Info of the User.
- * @param {string} - the contact that should be found is taken as a parameter.
- *
- *
+
+ * This function edits the contact info of the user
+ * @param {string} - the contact to be found 
  */
 function editContact(user) {
   openModal("edit_contact_modal");
-
   editingContact = findContactByUserName(user);
   edit_name.value = editingContact.user_name;
   edit_email.value = editingContact.email;
@@ -163,11 +135,7 @@ function editContact(user) {
 }
 
 /**
- *
- * This function saves the edited Contact in the Backend.
- *
- *
- *
+ * This function saves the edited contact in the backend.
  */
 async function saveEditedContact() {
   let acronym = createAcronym(edit_name.value);
@@ -185,10 +153,8 @@ async function saveEditedContact() {
 
 /**
  *
- * This function deletes the Contact and saves the Contactlist in the Backend again.
- * @param {string} - the contact that should be deleted is taken as a parameter.
- *
- *
+ * This function deletes the contact and saves the contactlist in the backend again
+ * @param {string} - the contact to be deleted
  */
 
 async function deleteContact(user) {
@@ -196,7 +162,6 @@ async function deleteContact(user) {
   let indexToRemove = contacts.findIndex(
     (contact) => contact.user_name === target
   );
-
   if (indexToRemove !== -1) {
     contacts.splice(indexToRemove, 1);
     await setItem("contacts", JSON.stringify(contacts));
@@ -208,17 +173,14 @@ async function deleteContact(user) {
 }
 
 /**
- *
- * This function deletes the Contact inside of a Modal.
- * @param {string} - the Modal that should be closed.
- *
+ * This function deletes the contact inside of a modal
+ * @param {string} - if of the modal to be closed
  *
  */
 async function deleteContactInModal(id) {
   let modal = document.getElementById(id);
   target = modal.value;
   let toDelete = contacts.findIndex((contact) => contact.user_name === target);
-
   if (toDelete !== -1) {
     contacts.splice(toDelete, 1);
     await setItem("contacts", JSON.stringify(contacts));
@@ -230,9 +192,7 @@ async function deleteContactInModal(id) {
 }
 
 /**
- *
- * This help function deletes User Input inside the Edit Modal.
- *
+ * This help function deletes user input inside the edit modal.
  *
  */
 function resetEditForm() {
@@ -242,9 +202,7 @@ function resetEditForm() {
 }
 
 /**
- *
  * This function is for highlighting the current chosen User
- *
  *
  */
 function changeDisplay() {
@@ -253,26 +211,21 @@ function changeDisplay() {
   currentHighlightedDiv.classList.remove("highlighted");
 }
 
-
-
 /**
  *
- * This function puts a upper case on the first and last Name as the user types
- *
+ * This function puts a upper case on the first and last name as the user types
  *
  */
 
 function capitalizeName(modal) {
   let nameOnInput = document.getElementById(modal).value;
   let arr = nameOnInput.split(" ");
-  for(let i = 0; i < arr.length; i++){
+  for (let i = 0; i < arr.length; i++) {
     arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
     let fullName = arr.join(" ");
     document.getElementById(modal).value = fullName;
   }
 }
-
-
 
 /**
  *
@@ -282,8 +235,6 @@ function capitalizeName(modal) {
  * @param {string} - name - name of Contact
  * @param {string} - acronym - acronym of Contact
  * @param {string} - color - color of Contact
- *
- *
  */
 
 function htmlUserTemplate(email, phone, name, acronym, color) {
@@ -292,7 +243,6 @@ function htmlUserTemplate(email, phone, name, acronym, color) {
   <div class="user_icon" style="background-color: ${color}">${acronym}</div>
   <div class="user_edit_container">
   <div class="username">${name}</div>
-  
   <div class="edit_user">
   <div id="edit_contact" onclick="editContact('${name}')">
     <img src="/assets/img/edit.png">
@@ -318,7 +268,6 @@ function htmlUserTemplate(email, phone, name, acronym, color) {
 </div>
 </div>
 </div>
-
 </div>
 <div class="contact_information">
     <span class="information">Contact Information</span>

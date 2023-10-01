@@ -20,8 +20,6 @@ function renderCategories() {
  * this function returns the main template for categories
  * @param - no parameter
  */
-
-//excluded: onkeydown ="pickExistingCategory(event)"
 function templateCategory() {
   let templateCategory = /*html*/ `
     <div class="inputWithList">
@@ -337,7 +335,6 @@ function pickExistingCategory(event) {
   if (!disallowedKeys.includes(event.key)) {
     let enteredCategoryName =
       document.getElementById("categorySelection").value;
-
     for (let i = 0; i < categories.length; i++) {
       let existingCategory = categories[i]["name"];
       existingCategory = existingCategory.slice(0, -1);

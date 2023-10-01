@@ -2,10 +2,18 @@ const form = document.getElementById("forgot-form");
 const button = document.querySelector(".fly-in-button");
 const overlay = document.querySelector(".overlay");
 
+/**
+ * this delays the creation of a new promise
+ * @param {}  - no param
+ */
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/** CHECK THIS
+ * adding eventlistenter
+ * @param {}  - no param
+ */
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const passwordMatching = await resetPassword();
@@ -18,6 +26,10 @@ form.addEventListener("submit", async (event) => {
   }
 });
 
+/** CHECK THIS
+ * this resets the password
+ * @param {}  - no param
+ */
 async function resetPassword() {
   let password = document.getElementById("password");
   let confirmedPass = document.getElementById("confirmpassword");

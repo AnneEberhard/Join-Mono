@@ -1,4 +1,4 @@
-//for includeHTML() and initTemplate('addTask') see script_Templates.js
+//for includeHTML() and initTemplate('addTask') see script_templates.js
 //for categories see add_task_categories.js
 //for saving see save_add_tasks.js
 //for backend see storage.js

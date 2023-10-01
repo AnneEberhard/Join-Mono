@@ -21,6 +21,7 @@ async function loadSummary(){
 
 /**
  * determine amounts of tasks
+ * @param {} - no parameter
  */
 async function countTasks(){    
     for (let t = 0; t < tasks.length; t++) {
@@ -40,9 +41,10 @@ async function countTasks(){
 }
 
 
-    /**
-     * render the tasks and amounts determined in function above
-     */
+/**
+ * render the tasks and amounts determined in function above
+ * @param {} - no parameter
+ */
 function renderSummary() {
     //to be deleted once loadTasks() works
     document.getElementById('tasks_in_Board_number').innerHTML = `${summaryTasksInBoard}`;
@@ -60,6 +62,7 @@ function renderSummary() {
 
 /**
  * all tasks on board
+ * @param {} - no parameter
  */
 function countBoard(){
     summaryTasksInBoard++;
@@ -148,6 +151,7 @@ function formatDate(inputDate) {
 
 /**
  * create Greeting
+ * @param {} - no parameter
  */
 function greetingSummary(){
     createGreetingPhrase();
@@ -158,6 +162,7 @@ function greetingSummary(){
 
 /**
  * Greeting phrase depending on daytime
+ * @param {} - no parameter
  */
 function createGreetingPhrase(){
     let timeNow = new Date().getHours();
@@ -177,6 +182,7 @@ function createGreetingPhrase(){
 /**
  * 
  * @returns Name of User or nothing when Guest is online
+ * @param {} - no parameter
  */
 async function createNameGreating(){
         await loadUsers();
@@ -190,6 +196,7 @@ async function createNameGreating(){
 
 /**
  * fading Greeting away if display is smaller 1200px 
+ * @param {} - no parameter
  */
 function fadeGreeting(){
     if (window.innerWidth < 1200) {
@@ -213,7 +220,10 @@ function fadeGreeting(){
     }
 }
 
-
+/**
+ * refers to the board site 
+ * @param {} - no parameter
+ */
 function openBoard(){
     window.location.href = "board.html";
 }

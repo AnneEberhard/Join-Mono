@@ -58,6 +58,10 @@ function createTask(event) {
   }
 }
 
+/**
+ * this function clears the subtask array
+ * @param - no param
+ */
 function flushSubtasks() {
   subTasksArray = [];
 }
@@ -140,7 +144,7 @@ async function saveTask() {
 
 
 /**
- * this function saves only the savedCategories to the backend and is used when a category is deleted
+ * this function saves only the savedCategories to the backend and is used when a category is deleted or added
  * @param - no param
  */
 async function saveOnlyCategories() {

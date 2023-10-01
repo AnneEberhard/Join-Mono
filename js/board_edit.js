@@ -86,7 +86,6 @@ function renderAssignementsInTaskOverview(task, idContainer) {
     document.getElementById(`${idContainer}`).innerHTML = "";
     for (let i = 0; i < assignedUsers.length; i++) {
         const assignedUser = assignedUsers[i];
-
         for (let k = 0; k < contacts.length; k++) {
             const contact = contacts[k];
             renderAssignmentIconsInCard(assignedUser, contact, idContainer);
@@ -95,14 +94,13 @@ function renderAssignementsInTaskOverview(task, idContainer) {
 }
 
 /**
- * compares if assignedUser is an User in contact List --> creates and IconCircle
+ * compares if assignedUser is an User in contact List --> creates an IconCircle
  * @param {*} assignedUser 
  * @param {*} contact 
  * @param {*} idContainer 
  */
 function renderAssignmentIconsInCard(assignedUser, contact, idContainer) {
     if (assignedUser.user_name === contact.user_name) {
-
         let newContainer = document.createElement('div');
         newContainer.classList.add('editTaskUsername');
         let newCircle = document.createElement('div');
@@ -110,13 +108,10 @@ function renderAssignmentIconsInCard(assignedUser, contact, idContainer) {
         newCircle.style.backgroundColor = getColor(assignedUser.user_name);
         let newName = document.createElement('div');
         newName.classList.add('editTaskUsernameName');
-
         let un = document.getElementById(idContainer);
-
         newContainer.appendChild(newCircle);
         newContainer.appendChild(newName);
         newCircle.innerHTML = assignedUser.acronym;
-
         newName.innerHTML = assignedUser.user_name;
         un.appendChild(newContainer);
     }
@@ -128,7 +123,6 @@ function renderAssignmentIconsInCard(assignedUser, contact, idContainer) {
  */
 async function renderSubtasksInTaskOverview(id) {
     document.getElementById('editTaskContainerSubtasksTasks').innerHTML = "";
-
     for (let s = 0; s < subTasksArray.length; s++) {
         if (subTasksArray[s].subTaskDone == 0) {
             renderSubtasksWithoutHook(s, id);
@@ -150,8 +144,7 @@ function renderAddSubtasksInOverview(id) {
             <div class="buttonAddSubTask hover" onclick="addSubTask(${id}, 'Edit')">
                 <img src="assets/img/plus.png" />
             </div>
-        </div>
-    `
+        </div>`
 }
 
 /**
@@ -164,8 +157,7 @@ function renderSubtasksWithoutHook(index, id) {
             <div class="subtaskInOverview">
                 <div id="checkBoxEdit${id}${index}" class="checkBox hover" onclick="addCheck(${index}, ${id},'Edit')"></div>
                 <div>${subTasksArray[index].subTaskName}</div>
-            </div>
-        `
+            </div>`
 }
 
 /**
@@ -202,10 +194,9 @@ async function addSubTaskEdit(id) {
 }
 
 
-
 /**
  * confirm Container if task should be deleted
- * @param {*} a 
+ * @param {*} id index of task which was clicked 
  */
 function askBeforeDelete(id) {
     let confirmDelete = document.getElementById('confirmDeleteTask');
@@ -215,13 +206,12 @@ function askBeforeDelete(id) {
         <div id="confirmDeleteTaskAnswers">
                 <div id="confirmDeleteTaskAnswersYes" onclick="deleteTaskFinally(${id})">Delete</div>
                 <div id="confirmDeleteTaskAnswersNo" onclick="closeDeleteRequest()">Back</div>
-        </div>
-    `
+        </div>`
 }
 
 /**
- * look at className 
- * @param {*} a 
+ * carries out final delete 
+ * @param {*} id index of task which was clicked
  */
 async function deleteTaskFinally(id) {
     closeDeleteRequest();
@@ -229,17 +219,22 @@ async function deleteTaskFinally(id) {
     renderBoardCards();
     closeEditTask();
     flushSubtasks();
-    
 }
 
 
-
+/**
+ * closes the delete request container 
+ * @param - no parameter
+ */
 function closeDeleteRequest() {
     document.getElementById('confirmDeleteTask').innerHTML = "";
     document.getElementById('confirmDeleteTask').classList.add('d-none');
 }
 
-
+/**
+ * closes the edit task container 
+ * @param - no parameter
+ */
 function closeEditTask() {
     enableBackgroundScroll();
     document.getElementById('editTask').classList.add('d-none');
@@ -247,7 +242,10 @@ function closeEditTask() {
 
 }
 
-
+/**
+ * closes opens edit task container 
+ * @param {*} id index of task which was clicked
+ */
 function openEditMode(id) {
     let task = tasks[id];
     prioToEdit = task['prio'];
@@ -255,7 +253,7 @@ function openEditMode(id) {
 }
 
 /**
- * render Edit Container 
+ * render edit container 
  * @param {*} task 
  * @param {*} id 
  */
@@ -311,8 +309,7 @@ function renderEditModeTemplates(task, id) {
                     <div id="editTaskAssignedChangable"></div>
                 </div>
             </div>
-</form>
-    `
+</form>`
     let assignedCard = task['assignedContacts'];
     renderContacts('editContactContainer', 'Edit');
     renderDueDate('Edit');
@@ -321,7 +318,7 @@ function renderEditModeTemplates(task, id) {
     renderAssignedPrio(task["prio"], 'Edit');
 }
 
-/**
+/** CHECK THIS
  * this function assigns the clicked-on priority to the global variable assignedPrio or unassigns it at the 2nd click
  * @param {string} chosenPrio - id of clicked-on priority
  */
@@ -335,7 +332,7 @@ function editPrio(chosenPrio, modus, id) {
     renderAssignedPrio(chosenPrio, modus);
   }
 
-/**
+/**CHECK THIS
  * 
  * @param {*} assContacts 
  */
@@ -346,7 +343,6 @@ function renderContactsAssignContacts(assContacts) {
         for (let d = 0; d < searchArea.length; d++) {
             const searchElement = searchArea[d];
             searchValue = searchElement.textContent || searchElement.innerText;
-
             if (searchValue.indexOf(assContact.user_name) > -1) {
                 classContainer = d;
                 assignContact(d, 'Edit')
@@ -359,7 +355,7 @@ function renderContactsAssignContacts(assContacts) {
 
 /**
  * save edited Task, close EditMode and render board
- * @param {*} id 
+ * @param {*} id - id of task
  */
 async function saveEditedBoard(id) {
     let prioFilled = checkEditedPrio();
@@ -386,9 +382,12 @@ async function saveEditedBoard(id) {
     }
 }
 
+/**CHECK THIS
+ * saves edited Task, close EditMode and render board
+ * @param {*} id - id of task
+ */
 async function saveBoard(id) {
         tasks[id]['subtasks'] = subTasksArray;
-        console.log(tasks[id]);
         await saveTask();
         closeEditTask();
         await renderBoardCards();
@@ -407,16 +406,26 @@ function checkEditedPrio() {
     }
   }
 
+  /**
+  * this function prevents background scroll
+  * @param - no param
+*/
 function preventBackgroundScroll() {
         document.getElementById('board').style.overflow = 'hidden'; 
 }
 
-
+  /**
+  * this function enables background scroll
+  * @param - no param
+*/
 function enableBackgroundScroll() {
     document.getElementById('board').style.overflow = ''; 
 }
 
-
+  /**
+  * this function disables background scroll
+  * @param - no param
+*/
 function disableBackgroundScroll() {
         preventBackgroundScroll();
 }

@@ -111,8 +111,7 @@ async function createNameCircle() {
 
 /**
 * This function logs that the user is logged out from the Website
-*
-* 
+* @param {} - no parameter
 */
 function logoutUser(){
   localStorage.setItem(`loggedIn`, false);
@@ -122,7 +121,6 @@ function logoutUser(){
 
 /**
 * function creates an acronym using the first letter of the first name and first letter of the last name, if existing
-*
 * @param {} - no parameter
 */
 function createAcronym(currentUser) {
@@ -138,9 +136,8 @@ function createAcronym(currentUser) {
 
 
 /**
-* function saves paaremter for categories
-*
-* @param {string} - no parameter
+* function saves parameter for categories to local storage when adding a new task to that column
+* @param {string} clickColumn - id of column in which the button was clicked
 */
 function saveColumn(clickColumn) {
   column = localStorage.setItem('column', clickColumn);

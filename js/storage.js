@@ -1,6 +1,10 @@
 const STORAGE_TOKEN = "D6K8FZVPKEGWQYJC18B898KX3JSFP5EYW8XN035V";
 const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
+/**
+* function saves data to the backend
+* @param {} - no parameter
+*/
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
   return fetch(STORAGE_URL, {
@@ -9,6 +13,10 @@ async function setItem(key, value) {
   }).then((res) => res.json());
 }
 
+/**
+* function gets data from the backend
+* @param {} - no parameter
+*/
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
   return fetch(url)
