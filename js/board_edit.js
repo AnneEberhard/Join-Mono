@@ -254,62 +254,13 @@ function openEditMode(id) {
 
 /**
  * render edit container 
- * @param {*} task 
- * @param {*} id 
+ * @param {*} task = JSON of task to be edited
+ * @param {*} id = id of task to be edited
  */
 function renderEditModeTemplates(task, id) {
     let editTask = document.getElementById('editTask');
     editTask.innerHTML = "";
-    editTask.innerHTML = /*html*/`
-        <form id="editTaskContainer" onsubmit="saveEditedBoard(${id}); return false;">
-            <div id="editTaskContainerClose" onclick="closeEditTask()"><img src="assets/img/Icon_close.png" alt="">
-            </div>
-            <button id="editTaskContainerSave" type="submit">
-                <div id="editTaskContainerSaveText">Ok</div>
-                <div id="editTaskContainerSaveIcon"><img src="assets/img/done-30.png"></div>
-            </button>
-            <div id="editTaskContainerInner" class="editContainerInner" onclick="closeOptionsOnClick(event, 'Edit')">
-                <div id="editTaskTitle" class="editTaskTitleFixed editTasksWidth80">
-                    <div id="editTaskTitleFixed">Title</div>
-                    <input id="editTaskTitleChangable" required class="inputsAddTask" value="${task['title']}" maxlength="30">
-                </div>
-                <div id="editTaskDescription" class="editTaskTitleFixed editTasksWidth80">
-                    <div id="editTaskDescriptionFixed">Description</div>
-                    <textarea id="editTaskDescriptionChangable" class="inputsAddTask" required maxlength="100">${task['description']}</textarea>
-                </div>
-                <div id="editTaskDueDate" class="editTaskTitleFixed editTasksWidth80">
-                    <div id="editTaskDueDateFixed">Due Date</div>
-                        <input
-                            id="dueDateEdit"
-                            class="inputsAddTask height51 padding hover"
-                            type="date"
-                            required
-                            value="${task['dueDate']}"       
-                            />
-                </div> 
-                <div id="editTaskPrio" class="editTaskTitleFixed editTasksWidth80">
-                    <div id="editTaskPrioFixed">Priority</div>
-                    <div id="editTaskPrioChangable"> 
-                        <button id="urgentEdit" type="button" onclick="editPrio('urgent', 'Edit', ${id})" class="prio height51 hover">
-                        Urgent <img src="assets/img/urgent.png" />
-                        </button>
-                        <button id="mediumEdit" type="button" onclick="editPrio('medium', 'Edit', ${id})" class="prio height51 hover">
-                            Medium <img src="assets/img/medium.png" />
-                        </button>
-                        <button id="lowEdit" type="button" onclick="editPrio('low', 'Edit', ${id})" class="prio height51 hover">
-                            Low <img src="assets/img/low.png" />
-                        </button>
-                    </div>
-                    <div id="prioAlertEdit" class="alert"></div>
-                </div>
-                <div id="editTaskAssigned" class="editTaskTitleFixed">
-                    <div id="editTaskAssignedFix">Assigned to</div>
-                    <div id="editContactContainer" class="inputsAddTask editAssignment"></div>
-                    <div id="editContactAlert" class="alert"></div>
-                    <div id="editTaskAssignedChangable"></div>
-                </div>
-            </div>
-</form>`
+    editTask.innerHTML = editModeTemplate(task, id);
     let assignedCard = task['assignedContacts'];
     renderContacts('editContactContainer', 'Edit');
     renderDueDate('Edit');
@@ -318,11 +269,72 @@ function renderEditModeTemplates(task, id) {
     renderAssignedPrio(task["prio"], 'Edit');
 }
 
-/** CHECK THIS
+/**
+ * returns html code for the editTaks container
+ * @param {*} task = JSON of task to be edited
+ * @param {*} id = id of task to be edited
+ */
+function editModeTemplate(task, id) {
+    let editModeTemplate = /*html*/`
+    <form id="editTaskContainer" onsubmit="saveEditedBoard(${id}); return false;">
+        <div id="editTaskContainerClose" onclick="closeEditTask()"><img src="assets/img/Icon_close.png" alt="">
+        </div>
+        <button id="editTaskContainerSave" type="submit">
+            <div id="editTaskContainerSaveText">Ok</div>
+            <div id="editTaskContainerSaveIcon"><img src="assets/img/done-30.png"></div>
+        </button>
+        <div id="editTaskContainerInner" class="editContainerInner" onclick="closeOptionsOnClick(event, 'Edit')">
+            <div id="editTaskTitle" class="editTaskTitleFixed editTasksWidth80">
+                <div id="editTaskTitleFixed">Title</div>
+                <input id="editTaskTitleChangable" required class="inputsAddTask" value="${task['title']}" maxlength="30">
+            </div>
+            <div id="editTaskDescription" class="editTaskTitleFixed editTasksWidth80">
+                <div id="editTaskDescriptionFixed">Description</div>
+                <textarea id="editTaskDescriptionChangable" class="inputsAddTask" required maxlength="100">${task['description']}</textarea>
+            </div>
+            <div id="editTaskDueDate" class="editTaskTitleFixed editTasksWidth80">
+                <div id="editTaskDueDateFixed">Due Date</div>
+                    <input
+                        id="dueDateEdit"
+                        class="inputsAddTask height51 padding hover"
+                        type="date"
+                        required
+                        value="${task['dueDate']}"       
+                        />
+            </div> 
+            <div id="editTaskPrio" class="editTaskTitleFixed editTasksWidth80">
+                <div id="editTaskPrioFixed">Priority</div>
+                <div id="editTaskPrioChangable"> 
+                    <button id="urgentEdit" type="button" onclick="editPrio('urgent', 'Edit')" class="prio height51 hover">
+                    Urgent <img src="assets/img/urgent.png" />
+                    </button>
+                    <button id="mediumEdit" type="button" onclick="editPrio('medium', 'Edit')" class="prio height51 hover">
+                        Medium <img src="assets/img/medium.png" />
+                    </button>
+                    <button id="lowEdit" type="button" onclick="editPrio('low', 'Edit')" class="prio height51 hover">
+                        Low <img src="assets/img/low.png" />
+                    </button>
+                </div>
+                <div id="prioAlertEdit" class="alert"></div>
+            </div>
+            <div id="editTaskAssigned" class="editTaskTitleFixed">
+                <div id="editTaskAssignedFix">Assigned to</div>
+                <div id="editContactContainer" class="inputsAddTask editAssignment"></div>
+                <div id="editContactAlert" class="alert"></div>
+                <div id="editTaskAssignedChangable"></div>
+            </div>
+        </div>
+</form>`;
+    return editModeTemplate;
+}
+
+
+/** 
  * this function assigns the clicked-on priority to the global variable assignedPrio or unassigns it at the 2nd click
  * @param {string} chosenPrio - id of clicked-on priority
+ * @param {string} modus - modus edit
  */
-function editPrio(chosenPrio, modus, id) {
+function editPrio(chosenPrio, modus) {
     document.getElementById(`prioAlert${modus}`).innerHTML = '';
     if (prioToEdit === chosenPrio) {
         prioToEdit = '';
@@ -332,9 +344,9 @@ function editPrio(chosenPrio, modus, id) {
     renderAssignedPrio(chosenPrio, modus);
   }
 
-/**CHECK THIS
- * 
- * @param {*} assContacts 
+/**
+ * renders assigned contacts in edit modus
+ * @param {*} assContacts = JSON of assigned contacts to task
  */
 function renderContactsAssignContacts(assContacts) {
     let searchArea = document.getElementsByClassName("contactList");
@@ -382,7 +394,7 @@ async function saveEditedBoard(id) {
     }
 }
 
-/**CHECK THIS
+/**
  * saves edited Task, close EditMode and render board
  * @param {*} id - id of task
  */
