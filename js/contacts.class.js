@@ -27,6 +27,7 @@ class Contact {
 /**
  * 
  * This function returns a random color for the Contact Profile Picture. 
+ * @param {}  - no param
  */
   getRandomColor() {
     const letters = "0123456789ABCDEF";

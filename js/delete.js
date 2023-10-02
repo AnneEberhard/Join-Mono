@@ -36,7 +36,7 @@ function deleteCategory(categoryToDelete, i) {
 
 /**
  * this function closes the alert
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function closeDeleteCategoryRequest() {
   document.getElementById('confirmDeleteCategory').innerHTML = "";

@@ -19,6 +19,7 @@ let editingContact;
 /**
  * This function is used to first load the templates, then it will load the contacts from the backend.
  * After it's loaded from the backend, the contact list is getting rendered.
+ * @param {}  - no param
  */
 async function init() {
   checkLogIn();
@@ -78,6 +79,7 @@ async function createContact(id) {
 
 /**
  * This function loads contacts from the backend.
+ * @param {}  - no parameter
  */
 async function loadContacts() {
   try {
@@ -89,6 +91,7 @@ async function loadContacts() {
 
 /**
  * This help function resets the User Input.
+ * @param {}  - no parameter
  */
 function resetForm() {
   user_name.value = "";
@@ -136,6 +139,7 @@ function editContact(user) {
 
 /**
  * This function saves the edited contact in the backend.
+ * @param {}  - no parameter
  */
 async function saveEditedContact() {
   let acronym = createAcronym(edit_name.value);
@@ -193,6 +197,7 @@ async function deleteContactInModal(id) {
 
 /**
  * This help function deletes user input inside the edit modal.
+ * @param {}  - no parameter
  *
  */
 function resetEditForm() {
@@ -203,6 +208,7 @@ function resetEditForm() {
 
 /**
  * This function is for highlighting the current chosen User
+ * @param {}  - no parameter
  *
  */
 function changeDisplay() {
@@ -212,9 +218,8 @@ function changeDisplay() {
 }
 
 /**
- *
  * This function puts a upper case on the first and last name as the user types
- *
+ * @param {}  - no parameter
  */
 
 function capitalizeName(modal) {
@@ -228,7 +233,6 @@ function capitalizeName(modal) {
 }
 
 /**
- *
  * This help function is used for the HTML Template to render Contact Details.
  * @param {string} - email - email of Contact
  * @param {string} - phone - phone of Contact

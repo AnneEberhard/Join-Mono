@@ -4,7 +4,7 @@ const overlay = document.querySelector(".overlay");
 
 /**
  * this delays the following code bei ms milliseconds
- * @param {}  - no param
+ * @param {} - no parameter
  */
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -12,7 +12,7 @@ function delay(ms) {
 
 /**
  * when form is submitted, starts code for sending mail for resetting password
- * @param {}  - no param
+ * @param {} - no parameter
  */
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -28,7 +28,7 @@ form.addEventListener("submit", async (event) => {
 
 /**
  * send mail
- * @param {}  - no param
+ * @param {} - no parameter
  */
 async function sendMail() {
   let email = document.getElementById("email");

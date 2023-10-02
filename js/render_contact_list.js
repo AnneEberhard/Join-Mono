@@ -17,7 +17,7 @@ function renderContactList() {
 
 /**
  * clears the contact container
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function clearContactsContainer() {
   contactsContainer.innerHTML = "";
@@ -26,7 +26,7 @@ function clearContactsContainer() {
 /**
  * groups the contacts by the first letter of the first name into the global JSON array groupedContacts 
  * the respective first letter becomes the index of the group
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function groupContactsByAcronym() {
   for (const contact of contacts) {
@@ -36,14 +36,13 @@ function groupContactsByAcronym() {
     }
     groupedContacts[firstLetter].push(contact);
   }
- console.log(groupedContacts);
   return groupedContacts;
 }
 
 /**
  * returns the alphabetically sorted indices of grouped contacts 
  * and thereby the alphabetically sorted existing first letters
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function sortLetters() {
   return Object.keys(groupedContacts).sort();
@@ -52,7 +51,7 @@ function sortLetters() {
 /**
  * renders the basic outlay with a letterContainer for each group of contacts
  * including index = first letter as well as a divider 
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function renderHeaderContactsDivider() {
   for (const letter of sortedLetters) {
@@ -90,7 +89,7 @@ function createLetterHeader(letter) {
 
 /**
  * creates the divider below each header in the div for the grouped contacts 
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function createStrokeDiv() {
   const strokeDiv = document.createElement("div");
@@ -119,7 +118,7 @@ function renderSingleContact(letter, letterContainer) {
 
 /**
  * creates a overall div for a single contact
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function createContactContainer() {
   const contactContainer = document.createElement("div");
@@ -173,7 +172,7 @@ function createAcronymDiv(contact) {
 
 /**
  * creates an overall div for name and mail
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function createNameMailContainer() {
   const nameMailContainer = document.createElement("div");

@@ -1,6 +1,5 @@
 /**
  * this function starts the page templates
- *
  * @param - no parameter
  */
 async function initTemplate(categoryName) {
@@ -16,8 +15,7 @@ async function initTemplate(categoryName) {
 
 
 /**
- * this function includes the templates for Sitebar, Topbar, mobile Bars & task_form
- *
+ * this function includes the templates for sidebar, topbar, mobile Bars & task_form
  * @param - no parameter
  */
 async function includeHTML() {
@@ -36,8 +34,7 @@ async function includeHTML() {
 
 
 /**
- * function will highlight the active category on sitebar
- *
+ * function will highlight the active category on sidebar
  * @param {string} categoryName - gives the last string-part of the ID conatainer
  */
 async function showCategory(categoryName) {
@@ -61,7 +58,6 @@ async function showCategory(categoryName) {
 
 /**
  * function will highlight the active category on the mobile bar
- *
  * @param {string} categoryName - gives the last string-part of the ID conatainer
  */
 async function showMobileCategory(categoryName) {
@@ -80,7 +76,6 @@ async function showMobileCategory(categoryName) {
 
 /**
  * function will show toggle bar when clicking on the name circle
- *
  * @param {} - no parameter
  */
 function togglePopupBar() {
@@ -91,7 +86,6 @@ function togglePopupBar() {
 
 /**
  * function create a namecircle with the first letters of first and last name of the User
- *
  * @param {} - no parameter
  */
 async function createNameCircle() {

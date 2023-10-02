@@ -11,7 +11,7 @@ const overlay = document.querySelector(".overlay");
 
 /**
  * this delays the following code bei ms milliseconds
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -19,7 +19,7 @@ function delay(ms) {
 
 /**
  * when form is submitted, new registered user is added and login window is opened again
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -35,7 +35,7 @@ form.addEventListener("submit", async (event) => {
 
 /** 
  * this function adds a new user
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 async function addUser() {
   confirm.classList.remove("border-red");
@@ -64,7 +64,7 @@ async function addUser() {
 
 /**
  * resets the form
- * @param {}  - no param
+ * @param {}  - no parameter
  */
 function resetForm() {
   username.value = "";

@@ -8,6 +8,19 @@
  * @param - no param
  */
 function clearTask() {
+  clearTaskHTML();
+  renderCategories();
+  renderContacts();
+  renderPrio();
+  assignedPrio = "";
+  subTasksArray = [];
+}
+
+/**
+ * this function clears the HTML and classlists
+ * @param - no param
+ */
+function clearTaskHTML() {
   document.getElementById("title").value = "";
   document.getElementById("description").value = "";
   document.getElementById("categoryOptions").innerHTML = "";
@@ -21,11 +34,6 @@ function clearTask() {
   document.getElementById("mediumAdd").classList.remove("medium");
   document.getElementById("lowAdd").classList.remove("low");
   document.getElementById("popupNotice").classList.remove("visible");
-  renderCategories();
-  renderContacts();
-  renderPrio();
-  assignedPrio = "";
-  subTasksArray = [];
 }
 
 /**
@@ -41,16 +49,8 @@ function createTask(event) {
     let title = document.getElementById("title").value;
     let description = document.getElementById("description").value;
     let dueDate = document.getElementById("dueDateAdd").value;
-    let task = {
-      title: title,
-      description: description,
-      category: assignedCategory,
-      assignedContacts: assignedContacts,
-      dueDate: dueDate,
-      prio: assignedPrio,
-      subtasks: subTasksArray,
-      column: column,
-    };
+    let task = {title: title, description: description, category: assignedCategory, assignedContacts: assignedContacts, dueDate: dueDate, prio: assignedPrio,
+      subtasks: subTasksArray, column: column};
     tasks.push(task);
     saveTask();
     popUpNotice();
@@ -60,7 +60,7 @@ function createTask(event) {
 
 /**
  * this function clears the subtask array
- * @param - no param
+ * @param {}  - no parameter
  */
 function flushSubtasks() {
   subTasksArray = [];
@@ -68,7 +68,7 @@ function flushSubtasks() {
 
 /**
  * this function checks if a priority is assigned to task and writes an alert otherwise
- * @param - no param
+ * @param {}  - no parameter
  */
 function checkPrio() {
   if (
@@ -85,7 +85,7 @@ function checkPrio() {
 
 /**
  * this function checks if a correct category is assigned to task and writes an alert otherwise
- * @param - no param
+ * @param {}  - no parameter
  */
 function checkCorrectCategory() {
   let inputCategory = document.getElementById("categorySelection").value;
@@ -102,7 +102,7 @@ function checkCorrectCategory() {
 
 /**
  * this function checks if at least one contact is assigned to task and writes an alert otherwise
- * @param - no param
+ * @param {}  - no parameter
  */
 function checkCorrectContact() {
   if (assignedContacts.length != 0) {
@@ -115,7 +115,7 @@ function checkCorrectContact() {
 
 /**
  * this function shows popUp Notice when task is added and saved
- * @param - no param
+ * @param {}  - no parameter
  */
 function popUpNotice() {
   document.getElementById("popupNotice").classList.add("visible");
@@ -126,7 +126,7 @@ function popUpNotice() {
 
 /**
  * this function refers to the site board.html
- * @param - no param
+ * @param {}  - no parameter
  */
 function switchToBoard() {
   window.location.href = "board.html";
@@ -134,7 +134,7 @@ function switchToBoard() {
 
 /**
  * this function seves the JSONs tasks, savedCategories and the array savedfreeColors to the backend
- * @param - no param
+ * @param {}  - no parameter
  */
 async function saveTask() {
   await setItem("tasks", JSON.stringify(tasks));
@@ -142,10 +142,9 @@ async function saveTask() {
   await setItem("savedFreeColors", JSON.stringify(freeColors));
 }
 
-
 /**
  * this function saves only the savedCategories to the backend and is used when a category is deleted or added
- * @param - no param
+ * @param {}  - no parameter
  */
 async function saveOnlyCategories() {
   debugger;

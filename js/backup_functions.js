@@ -1,4 +1,4 @@
-//CHECK THIS if used
+//Not used
 
 async function deleteTask(id) {
     await loadToDelete();  
@@ -18,8 +18,6 @@ async function deleteContact(contactNameToDelete) {
    await setItem("contacts", JSON.stringify(contacts));
  }
 
-
- //could also be spliced into 2 functions, one for each JSON
  async function loadToDelete() {
   try {
   tasks = JSON.parse(await getItem("tasks")); 
@@ -31,9 +29,9 @@ async function deleteContact(contactNameToDelete) {
 
 /**
  * CHECK THIS
+ * Function divived into subfunctions now
  * This function renders the contact list.
  */
-
 function renderContactList2() {
   const contactsContainer = document.getElementById("contacts_container");
   contactsContainer.innerHTML = "";
