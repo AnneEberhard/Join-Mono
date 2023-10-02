@@ -1,13 +1,17 @@
 /** für Drag&Drop  */
 let currentDraggedElement;
 
+/**
+ * initialized rendering of board
+ * @param - no parameter
+ */
 async function renderBoard() {
     await renderBoardCards();
 }
 
 /**
- * 
  * load alle data from backend, delete tasks columns and build new Cards out of loaded Datas
+ * @param - no parameter
  */
 async function renderBoardCards() {
     await loadItems();
@@ -18,7 +22,10 @@ async function renderBoardCards() {
     fillEmptyColumns();
 }
 
-/** delete tasks columns when refreshing Board */
+/** 
+ * delete tasks columns when refreshing Board
+ * @param - no parameter
+ */
 async function deleteBoard() {
     document.getElementById('board_container_bottom_todo').innerHTML = "";
     document.getElementById('board_container_bottom_inprogress').innerHTML = "";
@@ -28,7 +35,6 @@ async function deleteBoard() {
 
 /**
  * creates variabeles for every attribut of the task with id & functions for creating an card for this task
- * 
  * @param {*} id passes index of the task
  */
 async function createBoardCard(id) {
@@ -50,10 +56,10 @@ async function createBoardCard(id) {
     createAssignmentIcons(assignedCard, idContainerAssignements);
 }
 
-/**CHECK THIS
+/**
  * 
  * @param {} category passes category of the task
- * @returns BgColor for the category
+ * @returns Background color for the category
  */
 function determineColorCategory(category) {
     let colorCode;
@@ -179,7 +185,7 @@ function createProgressbar(subtaskCard, id) {
     renderProgressText(done, tasksNumber, id);
 }
 
-/**CHECK THIS
+/**
  * counts progress to done
  * @param {*} subtaskCard Array with all subtasks of the task
  * @returns count
@@ -318,7 +324,6 @@ function searchTasksOnBoardMobile() {
  */
 function startDragging(id) {
     currentDraggedElement = id;
-    let draggedCard = document.getElementById(currentDraggedElement);
 }
 
 function allowDrop(ev) {
@@ -328,7 +333,7 @@ function allowDrop(ev) {
 
 async function moveTo(category) {
     let targetContainer = document.getElementById(category);
-    let draggedCard = document.getElementById(currentDraggedElement); //ID
+    let draggedCard = document.getElementById(currentDraggedElement); 
     targetContainer.appendChild(draggedCard);
     targetContainer.style.backgroundColor = '';
     changeTaskColumn(currentDraggedElement, category)
@@ -407,7 +412,7 @@ function isMobileDevice() {
  */
 window.addEventListener('resize', handleScreenResize);
 
-/** CHECK THIS
+/** 
  * to handle screen resizing
  */
 function handleScreenResize() {
