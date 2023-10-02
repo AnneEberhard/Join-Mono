@@ -29,8 +29,8 @@ function renderTaskOverview(task, id) {
     document.getElementById('editTaskContainerTitle').innerHTML = `${task['title']}`;
     document.getElementById('editTaskContainerDescription').innerHTML = `${task['description']}`;
     document.getElementById('editTaskContainerDueDateDate').innerHTML = `${task['dueDate']}`;
-    document.getElementById('editTaskContainerDelete').innerHTML = `<img src="/assets/img/Icon_delete.png" onclick="askBeforeDelete(${id})">`;
-    document.getElementById('editTaskContainerPrioPrio').innerHTML = `${task['prio']} <img src="../assets/img/${task['prio']}_white.png"/>`;
+    document.getElementById('editTaskContainerDelete').innerHTML = `<img src="assets/img/Icon_delete.png" onclick="askBeforeDelete(${id})">`;
+    document.getElementById('editTaskContainerPrioPrio').innerHTML = `${task['prio']} <img src="assets/img/${task['prio']}_white.png"/>`;
 }
 
 /**
@@ -44,11 +44,11 @@ function renderEditOverviewTemplate(colorCode, prio, id) {
         <div id="confirmDeleteTask" class="d-none">
         </div>
         <div id="editTaskContainer" >
-            <div id="editTaskContainerClose" onclick="saveBoard(${id})"><img src="/assets/img/Icon_close.png" alt="">
+            <div id="editTaskContainerClose" onclick="saveBoard(${id})"><img src="assets/img/Icon_close.png" alt="">
             </div>
             <div id="editTaskContainerEditDelete">
                 <div id="editTaskContainerDelete"></div>
-                <div id="editTaskContainerEdit" onclick="openEditMode(${id})"><img src="/assets/img/Icon_edit.png"></div>
+                <div id="editTaskContainerEdit" onclick="openEditMode(${id})"><img src="assets/img/Icon_edit.png"></div>
             </div>
             <div id="editTaskContainerInner">
                 <div id="editTaskContainerCategory" style="background-color: ${colorCode}"></div>

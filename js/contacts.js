@@ -249,7 +249,7 @@ function htmlUserTemplate(email, phone, name, acronym, color) {
   <div class="username">${name}</div>
   <div class="edit_user">
   <div id="edit_contact" onclick="editContact('${name}')">
-    <img src="/assets/img/edit.png">
+    <img src="assets/img/edit.png">
     <span>Edit</span>
     </div>
     <div id="delete_contact" onclick="deleteContact('${name}')">
@@ -261,7 +261,7 @@ function htmlUserTemplate(email, phone, name, acronym, color) {
     <img src="assets/img/more_vert.png">
     <div class="dropdown-content">
     <div id="edit_contact" onclick="editContact('${name}')">
-    <img src="/assets/img/edit.png">
+    <img src="assets/img/edit.png">
     <span>Edit</span>
     </div>
     <div id="delete_contact" onclick="deleteContact('${name}')">

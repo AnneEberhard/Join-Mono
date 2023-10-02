@@ -243,13 +243,13 @@ function renderDueDate(mode) {
 function renderPrio() {
   document.getElementById("prioContainer").innerHTML = /*html*/`
     <button id="urgentAdd" type="button" onclick="assignPrio('urgent', 'add')" class="prio height51">
-      Urgent <img src="../assets/img/urgent.png" />
+      Urgent <img src="assets/img/urgent.png" />
     </button>
     <button id="mediumAdd" type="button" onclick="assignPrio('medium', 'add')" class="prio height51">
-      Medium <img src="../assets/img/medium.png" />
+      Medium <img src="assets/img/medium.png" />
     </button>
     <button id="lowAdd" type="button" onclick="assignPrio('low', 'add')" class="prio height51">
-      Low <img src="../assets/img/low.png" />
+      Low <img src="assets/img/low.png" />
     </button>`;
 }
 
@@ -283,11 +283,11 @@ function renderAssignedPrio(chosenPrio, mode) {
     const capitalPrio = prio.charAt(0).toUpperCase() + prio.slice(1);
     if (prio === chosenPrio && prioBox.classList.contains(prio) === false) {
       prioBox.classList.add(`${prio}`);
-      prioBox.innerHTML = `${capitalPrio} <img src="../assets/img/${prio}_white.png" />`;
+      prioBox.innerHTML = `${capitalPrio} <img src="assets/img/${prio}_white.png" />`;
     }
     else {
       prioBox.classList.remove(`${prio}`);
-      prioBox.innerHTML = `${capitalPrio} <img src="../assets/img/${prio}.png" />`;
+      prioBox.innerHTML = `${capitalPrio} <img src="assets/img/${prio}.png" />`;
     }
   }
 }

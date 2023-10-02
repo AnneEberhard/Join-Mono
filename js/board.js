@@ -111,7 +111,7 @@ function renderBoardCard(
                 <div class="board_task_assignments">
                     <div class="board_task_working">
                         <div class="icons_container" id="board_icons_username${ID}"></div>
-                        <div class="board_prio"><img src="../assets/img/${prioCard}.png" /></div>
+                        <div class="board_prio"><img src="assets/img/${prioCard}.png" /></div>
                     </div>                            
                 </div>
             </div>
