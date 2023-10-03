@@ -1,10 +1,6 @@
 //Not used
 
-async function deleteTask(id) {
-    await loadToDelete();  
-    tasks.splice(id, 1);   
-    await setItem("tasks", JSON.stringify(tasks));
-}
+
 
 async function deleteContact(contactNameToDelete) {
   await loadToDelete();
@@ -18,13 +14,13 @@ async function deleteContact(contactNameToDelete) {
    await setItem("contacts", JSON.stringify(contacts));
  }
 
- async function loadToDelete() {
-  try {
-  tasks = JSON.parse(await getItem("tasks")); 
-  contacts = JSON.parse(await getItem("contacts"));
-} catch (e) {
-  console.error("Loading error:", e);
-}
+
+ /**
+ * clears the contact container
+ * @param {}  - no parameter
+ */
+function clearContactsContainer() {
+  contactsContainer.innerHTML = "";
 }
 
 /**

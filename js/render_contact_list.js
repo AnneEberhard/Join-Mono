@@ -15,13 +15,15 @@ function renderContactList() {
   renderHeaderContactsDivider();
 }
 
-/**
+ /**
  * clears the contact container
  * @param {}  - no parameter
  */
-function clearContactsContainer() {
+ function clearContactsContainer() {
   contactsContainer.innerHTML = "";
+  groupedContacts = {};
 }
+
 
 /**
  * groups the contacts by the first letter of the first name into the global JSON array groupedContacts 
@@ -64,6 +66,7 @@ function renderHeaderContactsDivider() {
     contactsContainer.appendChild(letterContainer);
   }
 }
+
 
 /**
  * creates the div for the grouped contacts of the respective letter
