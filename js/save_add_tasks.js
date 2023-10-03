@@ -147,6 +147,5 @@ async function saveTask() {
  * @param {}  - no parameter
  */
 async function saveOnlyCategories() {
-  debugger;
   await setItem("savedCategories", JSON.stringify(categories));
 }

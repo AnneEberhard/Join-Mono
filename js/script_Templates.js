@@ -40,7 +40,7 @@ async function includeHTML() {
 async function showCategory(categoryName) {
     if (categoryName === "legal_notice" || categoryName === "privacy_policy") {
         document.getElementById("sidebar_categories").classList.add("d-none");
-      } else {
+      } else if (categoryName != "help") {
     document.getElementById("sidebar_categories").classList.remove("d-none");
     let allCategories = document.getElementsByClassName("active_category");
     if (allCategories.length != 0) {
