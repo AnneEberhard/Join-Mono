@@ -29,13 +29,13 @@ function renderTaskOverview(task, id) {
     document.getElementById('editTaskContainerTitle').innerHTML = `${task['title']}`;
     document.getElementById('editTaskContainerDescription').innerHTML = `${task['description']}`;
     document.getElementById('editTaskContainerDueDateDate').innerHTML = `${task['dueDate']}`;
-    document.getElementById('editTaskContainerDelete').innerHTML = `<img src="assets/img/Icon_delete.png" onclick="askBeforeDelete(${id})">`;
+    document.getElementById('editTaskContainerDelete').innerHTML = `<img src="assets/img/delete_bigger.png" onclick="askBeforeDelete(${id})">`;
     document.getElementById('editTaskContainerPrioPrio').innerHTML = `${task['prio']} <img src="assets/img/${task['prio']}_white.png"/>`;
 }
 
 /**
  * template of the card
- * @param {*} colorCode colorCode of the category
+ * @param {*} colorCode colorCode of the category 
  * @param {*} prio prio of the task
  * @param {*} id index of the task
  */
@@ -44,11 +44,11 @@ function renderEditOverviewTemplate(colorCode, prio, id) {
         <div id="confirmDeleteTask" class="d-none">
         </div>
         <div id="editTaskContainer" >
-            <div id="editTaskContainerClose" onclick="saveBoard(${id})"><img src="assets/img/Icon_close.png" alt="">
+            <div id="editTaskContainerClose" onclick="saveBoard(${id})"><img src="assets/img/close.png" alt="">
             </div>
             <div id="editTaskContainerEditDelete">
                 <div id="editTaskContainerDelete"></div>
-                <div id="editTaskContainerEdit" onclick="openEditMode(${id})"><img src="assets/img/Icon_edit.png"></div>
+                <div id="editTaskContainerEdit" onclick="openEditMode(${id})"><img src="assets/img/edit_white.png"></div>
             </div>
             <div id="editTaskContainerInner">
                 <div id="editTaskContainerCategory" style="background-color: ${colorCode}"></div>
@@ -168,7 +168,7 @@ function renderSubtasksWithoutHook(index, id) {
 function renderSubtasksWithHook(index, id) {
     document.getElementById('editTaskContainerSubtasksTasks').innerHTML += /*html*/`
             <div class="subtaskInOverview">
-                <div id="checkBoxEdit${id}${index}" class="checkBox hover" onclick="addCheck(${index},${id},'Edit')"><img src="assets/img/done-30.png"></div>
+                <div id="checkBoxEdit${id}${index}" class="checkBox hover" onclick="addCheck(${index},${id},'Edit')"><img src="assets/img/done.png"></div>
                 <div>${subTasksArray[index].subTaskName}</div>
             </div>
         `
@@ -277,11 +277,11 @@ function renderEditModeTemplates(task, id) {
 function editModeTemplate(task, id) {
     let editModeTemplate = /*html*/`
     <form id="editTaskContainer" onsubmit="saveEditedBoard(${id}); return false;">
-        <div id="editTaskContainerClose" onclick="closeEditTask()"><img src="assets/img/Icon_close.png" alt="">
+        <div id="editTaskContainerClose" onclick="closeEditTask()"><img src="assets/img/close.png" alt="">
         </div>
         <button id="editTaskContainerSave" type="submit">
             <div id="editTaskContainerSaveText">Ok</div>
-            <div id="editTaskContainerSaveIcon"><img src="assets/img/done-30.png"></div>
+            <div id="editTaskContainerSaveIcon"><img src="assets/img/done.png"></div>
         </button>
         <div id="editTaskContainerInner" class="editContainerInner" onclick="closeOptionsOnClick(event, 'Edit')">
             <div id="editTaskTitle" class="editTaskTitleFixed editTasksWidth80">

@@ -355,7 +355,7 @@ function addCheck(index, id, mode) {
     checkBoxElement.removeChild(existingImage);
     subTasksArray[index].subTaskDone = 0;
   } else {
-    document.getElementById(`checkBox${mode}${id}${index}`).innerHTML = /*html*/ `<img src="assets/img/done-30.png">`;
+    document.getElementById(`checkBox${mode}${id}${index}`).innerHTML = /*html*/ `<img src="assets/img/done.png">`;
     subTasksArray[index].subTaskDone = 1;
   }
 }

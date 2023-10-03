@@ -203,7 +203,7 @@ function templatedividerSmall() {
  */
 function templateCategorySelectionRight() {
   let templateCategorySelectionRight = `
-    <img src="assets/img/done-30.png" class="iconsNewCategory" id="addCategory"/>`;
+    <img src="assets/img/done.png" class="iconsNewCategory" id="addCategory"/>`;
   return templateCategorySelectionRight;
 }
 

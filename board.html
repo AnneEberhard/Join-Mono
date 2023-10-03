@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="styles/add_tasks_right.css" />
     <link rel="stylesheet" href="styles/board_add.css">
     <link rel="stylesheet" href="styles/responsiveness.css">
-    <link rel="icon" type="image/x-icon" href="assets/img/Join_logo_dark.png"/>
+    <link rel="icon" type="image/x-icon" href="assets/img/join_logo_dark.png"/>
     <script src="./js/script_templates.js"></script>
     <script src="script.js"></script>
     <script src="js/storage.js"></script>
@@ -40,7 +40,7 @@
         <div id="addTaskBoardContainer" > 
             <div class="closeBoardAddTask" >
                 <div class="closeButtonBoardAddTask" onclick="closeAddTask()">
-                    <img src="assets/img/Icon_close.png" alt="">
+                    <img src="assets/img/close.png" alt="">
                 </div>
             </div>
             <div w3-include-html="./assets/templates/task_form.html"></div>
@@ -63,7 +63,7 @@
                 </div>
                 <button id="board_container_search_addtask" onclick="openAddTask('board_container_bottom_todo')">
                     <div id="board_container_search_addtask_text">Add task</div>
-                    <img src="assets/img/Icon_plus_white.png" alt="">
+                    <img src="assets/img/plus_white.png" alt="">
                 </button>
             </div>  
         </div>
@@ -81,7 +81,7 @@
                 <div class="board_container_bottom_category_title">
                     <div class="board_container_bottom_category_name">To do</div>
                     <div class="board_container_bottom_category_icon" onclick="openAddTask('board_container_bottom_todo')"><img
-                            src="assets/img/Icons_plus_Board_categorie.png" alt=""></div>
+                            src="assets/img/board_plus_categories.png" alt=""></div>
                 </div>
                 <div id="board_container_bottom_todo" class="board_container_bottom_category"
                 ondrop="moveTo('board_container_bottom_todo')" 
@@ -92,7 +92,7 @@
                 <div class="board_container_bottom_category_title">
                     <div class="board_container_bottom_category_name">In progress</div>
                     <div class="board_container_bottom_category_icon" onclick="openAddTask('board_container_bottom_inprogress')"><img
-                            src="assets/img/Icons_plus_Board_categorie.png" alt=""></div>
+                            src="assets/img/board_plus_categories.png" alt=""></div>
                 </div>
                 <div id="board_container_bottom_inprogress" class="board_container_bottom_category"
                 ondrop="moveTo('board_container_bottom_inprogress')" 
