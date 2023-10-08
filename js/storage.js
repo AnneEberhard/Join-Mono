@@ -3,7 +3,8 @@ const STORAGE_URL = "https://remote-storage.developerakademie.org/item";
 
 /**
 * function saves data to the backend
-* @param {} - no parameter
+* @param {string} key - key for storage
+* @param {object} value - object to store
 */
 async function setItem(key, value) {
   const payload = { key, value, token: STORAGE_TOKEN };
@@ -15,7 +16,7 @@ async function setItem(key, value) {
 
 /**
 * function gets data from the backend
-* @param {} - no parameter
+* @param {string} key - key for storage
 */
 async function getItem(key) {
   const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;

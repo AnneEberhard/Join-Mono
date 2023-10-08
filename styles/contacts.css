@@ -492,7 +492,6 @@ input[type="number"] {
   overflow-y: auto;
 }
 
-
 #edit_contact,
 #delete_contact {
   display: flex;
@@ -716,7 +715,7 @@ input[type="number"] {
     left: 19.5%;
   }
 
-  #new_contact_modal{
+  #new_contact_modal {
     left: 26%;
     min-width: 68vw;
   }
@@ -745,7 +744,7 @@ input[type="number"] {
   #contactList {
     left: 22.2%;
   }
-  #new_contact_modal{
+  #new_contact_modal {
     left: 25%;
     min-width: 50vw;
   }
@@ -755,13 +754,12 @@ input[type="number"] {
     left: 23.2%;
   }
 
-  #new_contact_modal{
+  #new_contact_modal {
     z-index: 17;
     left: 14%;
-
   }
 
-  #edit_contact_modal{
+  #edit_contact_modal {
     z-index: 11;
   }
 }
@@ -770,7 +768,6 @@ input[type="number"] {
   #contactList {
     left: 24.2%;
   }
-  
 }
 
 @media (max-width: 900px) {
@@ -978,7 +975,7 @@ input[type="number"] {
       height: 82.5vh;
     }
 
-    .contact_info_container{
+    .contact_info_container {
       margin-top: 81px;
     }
   }
@@ -1024,10 +1021,10 @@ input[type="number"] {
       margin-top: unset;
     }
 
-    #contactList{
+    #contactList {
       height: 75.5vh;
     }
-    .contact_info_container{
+    .contact_info_container {
       margin-top: 81px;
     }
   }
