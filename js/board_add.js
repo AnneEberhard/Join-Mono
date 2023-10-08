@@ -4,6 +4,7 @@
  */
 function openAddTask(column) {
     localStorage.setItem('column', column);
+    assignedContacts = [];
     if (isMobileDevice()) {
         window.location.href = "add_task.html";
     } else {
