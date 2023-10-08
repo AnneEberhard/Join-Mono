@@ -186,6 +186,10 @@ input:focus{
     align-items: center;
 }
 
+.board_container_bottom_category_icon:hover {
+    background-color: rgba(41, 171, 226, 0.15);
+}
+
 .board_task_container{
     width: 250px;
     height: 239px;

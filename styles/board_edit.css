@@ -79,7 +79,6 @@
 }
 
 #editTaskContainer{
-    height: 798px;
     max-height: 90%;
     width: 623px;
     background-color: white;
@@ -94,7 +93,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    gap: 24px;
+    gap: 8px !important;
+    font-size: 16px;
 }
 
 #editTaskContainerCategory{
@@ -238,7 +238,6 @@
     margin-left: 10px;
 }
 
-
 .editTaskUsername{
     display: flex;
     align-items: center;
@@ -259,9 +258,6 @@
     color: #FFFFFF; 
     background-color: #FF7A00;
 }
-
-
-
 
 #editTaskContainerClose{
     position: absolute;
@@ -302,6 +298,11 @@
     justify-content: center;
     align-items: center;
 }
+#editTaskContainerDelete:hover{
+    border: 1px solid rgb(41, 171, 226);
+    color: rgb(41, 171, 226);
+    background-color: rgba(41, 171, 226, 0.15);
+}
 
 #editTaskContainerEdit{
     background-color: #2A3647;
@@ -314,6 +315,11 @@
     align-items: center;
     font-weight: 600;
 }
+#editTaskContainerEdit:hover{
+    background-color: rgb(41, 171, 226);
+    border: 1px solid rgb(41, 171, 226);
+}
+
 
 #editTaskContainerSave{
     position: absolute;
@@ -331,6 +337,11 @@
     font-weight: 700;
     background-color: #2A3647;
     color: white;gap: 4px
+}
+
+#editTaskContainerSave:hover{
+    background-color: rgb(41, 171, 226);
+    border: 1px solid rgb(41, 171, 226);
 }
 
 #editTaskContainerSaveIcon{
@@ -374,7 +385,7 @@
 #editTaskDescription textarea{
     width: 100%;
     width: 100%;
-    height: 120px;
+    height: 80px;
     resize: none;
     border-radius: 10px;
     border: 1px solid rgb(209, 209, 209);
@@ -400,7 +411,7 @@
 }
 
 #contactsOptionsEdit{
-    max-height: 200px;
+    max-height: 150px;
     overflow: scroll;
 }
 

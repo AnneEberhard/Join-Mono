@@ -335,6 +335,11 @@ textarea:focus-visible {
   gap: 8px;
 }
 
+#contactsOptionsAdd {
+  overflow: scroll;
+  height: 150px;
+}
+
 .circleAcronym {
   width: 32px;
   height: 32px;
