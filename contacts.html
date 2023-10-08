@@ -24,7 +24,7 @@
     <div w3-include-html="assets/templates/mobile_template.html"></div>
     <div id="contactList">
       <div id="add_new_contact">
-        <button id="new_contact_btn" onclick="openModal('new_contact_modal')">
+        <button id="new_contact_btn" onclick="openModal('new_contact_background')">
           <div id="add_new_contact_text">New contact</div>
           <div id="add_new_contact_Icon">
             <img src="assets/img/add_person.png" alt="" />
@@ -38,8 +38,9 @@
       
     </div>
     <!-- Add Contact Modal -->
-    <div class="modal_new_contact" id="new_contact_modal" style="display:none;">
-      <img class="x" src="assets/img/close.svg" onclick="closeModal('new_contact_modal')">
+    <div id="new_contact_background" style="display: none;">
+    <div class="modal_new_contact" id="new_contact_modal">
+      <img class="x" src="assets/img/close.svg" onclick="closeModal('new_contact_background')">
         <div class="left_side">
           <div class="left_content">
           <img src="assets/img/join_logo_white.png">
@@ -54,14 +55,14 @@
           <img src="assets/img/blank_avatar.png">
           </div>
           <div class="form_container">
-          <form id="create_contact" onsubmit="createContact('new_contact_modal'); return false;">
+          <form id="create_contact" onsubmit="createContact('new_contact_background'); return false;">
             <div class="input-container">
               <input id="name" type="text" placeholder="Name" oninput="capitalizeName('name');" required/>
               <input id="email" class="" type="email" placeholder="Email" required/>
               <input id="phone" class="" type="number" placeholder="Phone"/>
             </div>
             <div class="create-buttons">
-              <button type="button" id="cancel" onclick="cancelContact('new_contact_modal')">Cancel</button>
+              <button type="button" id="cancel" onclick="cancelContact('new_contact_background')">Cancel</button>
               <button type="submit" id="create">
                 Create Contact
               </button>
@@ -70,10 +71,12 @@
         </div>
         </div>
       </div>
-    <!-- Edit COntact Modal -->
-    <div class="modal_edit_contact" id="edit_contact_modal" style="display:none;">
+    </div>
+    <!-- Edit Contact Modal -->
+    <div id="edit_contact_background" style="display: none;">
+    <div class="modal_edit_contact" id="edit_contact_modal">
       
-      <img class="x" src="assets/img/close.svg" onclick="closeModal('edit_contact_modal')">
+      <img class="x" src="assets/img/close.svg" onclick="closeModal('edit_contact_background')">
         <div class="left_side">
           <div class="left_content">
           <img src="assets/img/join_logo_white.png">
@@ -104,6 +107,7 @@
         </div>
       
       </div>
+    </div>
     <div class="contact_info_container" id="contact_container">
         
       <div class="header_in_contact">

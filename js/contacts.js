@@ -128,7 +128,7 @@ function findContactByUserName(userName) {
  * @param {string} - the contact to be found 
  */
 function editContact(user) {
-  openModal("edit_contact_modal");
+  openModal("edit_contact_background");
   editingContact = findContactByUserName(user);
   edit_name.value = editingContact.user_name;
   edit_email.value = editingContact.email;
@@ -151,7 +151,7 @@ async function saveEditedContact() {
   await setItem("contacts", JSON.stringify(contacts));
   await loadContacts();
   renderContactList();
-  closeModal("edit_contact_modal");
+  closeModal("edit_contact_background");
   renderContact(editingContact.user_name);
 }
 
@@ -190,7 +190,7 @@ async function deleteContactInModal(id) {
     await setItem("contacts", JSON.stringify(contacts));
     loadContacts();
     renderContactList();
-    closeModal("edit_contact_modal");
+    closeModal("edit_contact_background");
     document.getElementById("render").innerHTML = "";
   }
 }

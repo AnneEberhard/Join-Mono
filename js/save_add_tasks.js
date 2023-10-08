@@ -52,7 +52,7 @@ function createTask(event) {
     let task = {title: title, description: description, category: assignedCategory, assignedContacts: assignedContacts, dueDate: dueDate, prio: assignedPrio,
       subtasks: subTasksArray, column: column};
     tasks.push(task);
-    saveTask();
+    saveTask(); 
     popUpNotice();
     flushSubtasks();
   }
