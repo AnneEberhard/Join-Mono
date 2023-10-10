@@ -73,7 +73,6 @@ function determineColorCategory(category) {
  */
 function renderBoardCard(categoryCard,titleCard,descriptionCard,ID,prioCard,cats,categoryColorCode) {
   let board_todo = document.getElementById(`${cats}`);
-  console.log(cats);
   board_todo.innerHTML += templateBoardTodo(categoryCard,titleCard,descriptionCard,ID,prioCard,categoryColorCode);
   if (isMobileDevice()) {
     renderMoveBtns(cats, ID);
