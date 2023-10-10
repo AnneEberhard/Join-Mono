@@ -82,43 +82,44 @@ function determineColorCategory(category) {
 }
 
 /**
- * create template of a taskCard
+ * renders a taskCard
  * @param {*} attributes passes attributes of the task to create the template of this taskCard
  */
-function renderBoardCard(
-  categoryCard,
-  titleCard,
-  descriptionCard,
-  ID,
-  prioCard,
-  cats,
-  categoryColorCode
-) {
+function renderBoardCard(categoryCard,titleCard,descriptionCard, ID,prioCard,cats,categoryColorCode) {
   let board_todo = document.getElementById(`${cats}`);
-  board_todo.innerHTML += /*html*/ `
-        <div id="${ID}" draggable="true" ondragstart="startDragging(${ID})" 
-        onclick="openTaskOverview(${ID}, '${categoryCard}')" class="board_task_container" >
-            <div id="innerContainer${ID}" class="board_task_container_inner">
-                <div class="board_task_container_category" style="background-color: ${categoryColorCode}">${categoryCard}</div>
-                <div class="board_task_container_title_and_description">
-                    <div class="board_task_container_title">${titleCard}</div>
-                    <div class="board_task_container_description">${descriptionCard}</div>
-                </div>
-                <div class="board_task_progress">
-                    <div class="board_task_progressbar" id="progressbar${ID}"></div>
-                    <div class="board_task_progress_text" id="progressbarText${ID}"></div>
-                </div>
-                <div class="board_task_assignments">
-                    <div class="board_task_working">
-                        <div class="icons_container" id="board_icons_username${ID}"></div>
-                        <div class="board_prio"><img src="assets/img/${prioCard}.png" /></div>
-                    </div>                            
-                </div>
-            </div>
-        </div> `;
+  board_todo.innerHTML += templateBoardTodo(categoryCard,titleCard,descriptionCard, ID,prioCard,categoryColorCode);
   if (isMobileDevice()) {
     renderMoveBtns(cats, ID);
   }
+}
+
+/**
+ * create template a taskCard
+ * @param {*} attributes passes attributes of the task to create the template of this taskCard
+ */
+function templateBoardTodo(categoryCard,titleCard,descriptionCard, ID,prioCard,categoryColorCode) {
+  let templateBoardTodo = /*html*/ `
+  <div id="${ID}" draggable="true" ondragstart="startDragging(${ID})" 
+  onclick="openTaskOverview(${ID}, '${categoryCard}')" class="board_task_container" >
+      <div id="innerContainer${ID}" class="board_task_container_inner">
+          <div class="board_task_container_category" style="background-color: ${categoryColorCode}">${categoryCard}</div>
+          <div class="board_task_container_title_and_description">
+              <div class="board_task_container_title">${titleCard}</div>
+              <div class="board_task_container_description">${descriptionCard}</div>
+          </div>
+          <div class="board_task_progress">
+              <div class="board_task_progressbar" id="progressbar${ID}"></div>
+              <div class="board_task_progress_text" id="progressbarText${ID}"></div>
+          </div>
+          <div class="board_task_assignments">
+              <div class="board_task_working">
+                  <div class="icons_container" id="board_icons_username${ID}"></div>
+                  <div class="board_prio"><img src="assets/img/${prioCard}.png" /></div>
+              </div>                            
+          </div>
+      </div>
+  </div> `;
+  return templateBoardTodo;
 }
 
 /**

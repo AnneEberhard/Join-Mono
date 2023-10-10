@@ -34,8 +34,8 @@ async function includeHTML() {
 
 
 /**
- * function will start highlight the active category on sidebar
- * @param {string} categoryName - gives the last string-part of the ID conatainer
+ * function will start the highlighting of the active category on sidebar
+ * @param {string} categoryName - id of the current page
  */
 async function showCategory(categoryName) {
   if (categoryName === "legal_notice" || categoryName === "privacy_policy") {
@@ -45,6 +45,10 @@ async function showCategory(categoryName) {
   }
 }
 
+/**
+ * function will highlight the active category on sidebar
+ * @param {string} categoryName - id of the current page
+ */
 async function highlightCategory(categoryName) {
   document.getElementById("sidebar_categories").classList.remove("d-none");
   let allCategories = document.getElementsByClassName("active_category");
