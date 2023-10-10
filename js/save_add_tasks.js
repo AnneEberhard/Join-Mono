@@ -10,7 +10,7 @@
 function clearTask() {
   clearTaskHTML();
   renderCategories();
-  renderContacts();
+  renderContacts('contactContainer', 'Add');
   renderPrio();
   assignedPrio = "";
   subTasksArray = [];
@@ -29,7 +29,7 @@ function clearTaskHTML() {
   document.getElementById(`prioAlertAdd`).innerHTML = "";
   document.getElementById("dueDateAdd").value = "";
   document.getElementById("inputSubtaskAdd").value = "";
-  document.getElementById("subTasks").innerHTML = "";
+  document.getElementById("subTasksAdd").innerHTML = "";
   document.getElementById("urgentAdd").classList.remove("urgent");
   document.getElementById("mediumAdd").classList.remove("medium");
   document.getElementById("lowAdd").classList.remove("low");

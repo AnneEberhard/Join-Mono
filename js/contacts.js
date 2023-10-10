@@ -7,12 +7,7 @@ let edit_name = document.getElementById("edit_name");
 let edit_phone = document.getElementById("edit_phone");
 let edit_picture = document.getElementById("edit_avatar");
 
-let contacts = [
-  new Contact("Anja Schulz", +4917672446077, "schulz@gmail.com", "AS"),
-  new Contact("Alen Alduk", +4917672446077, "alen-1997@hotmail.de", "AA"),
-  new Contact("Anne Eberhard", +4917672446077, "anne.e@gmail.com", "AE"),
-  new Contact("Klemens Naue", +4917672446077, "klemens.n@gmail.com", "KN"),
-];
+let contacts = [];
 
 let editingContact;
 
@@ -85,7 +80,7 @@ async function loadContacts() {
   try {
     contacts = JSON.parse(await getItem("contacts"));
   } catch (e) {
-    console.error("Loading error:", e);
+    contacts = [];
   }
 }
 
@@ -169,7 +164,7 @@ async function deleteContact(user) {
   if (indexToRemove !== -1) {
     contacts.splice(indexToRemove, 1);
     await setItem("contacts", JSON.stringify(contacts));
-    loadContacts();
+    await loadContacts();
     renderContactList();
     document.getElementById("render").innerHTML = "";
     window.location.href = "contacts.html";
