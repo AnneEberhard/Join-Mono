@@ -123,8 +123,9 @@ function templateBoardTodo(categoryCard,titleCard,descriptionCard, ID,prioCard,c
 }
 
 /**
- * create template of a taskCard
- * @param {*} attributes passes attributes of the task to create the template of this taskCard
+ * renders the move buttons for mobile version
+ * @param {string} cats - current category of the card
+ * @param {string} id - id of the card
  */
 function renderMoveBtns(cats, id) {
   document.getElementById(`${id}`).innerHTML += /*html*/ `
@@ -132,18 +133,21 @@ function renderMoveBtns(cats, id) {
             <div class="nextCategory" onclick="moveToNextCat(${cats}, ${id}); stopPropagation(event)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg></div>
         `;
   if (cats == "board_container_bottom_todo") {
-    let lastCat = document
-      .getElementById(`${id}`)
-      .getElementsByClassName("lastCategory");
-    lastCat[0].classList.add("d-none");
+    endCategoriesButtons(id,"lastCategory");
   }
-
   if (cats == "board_container_bottom_done") {
-    let lastCat = document
-      .getElementById(`${id}`)
-      .getElementsByClassName("nextCategory");
-    lastCat[0].classList.add("d-none");
+    endCategoriesButtons(id,"nextCategory");
   }
+}
+
+/**
+ * hides the move buttons for mobile version at the respective end categories done and todo
+ * @param {string} id - id of the card
+ * @param {string} categoryClassName - either lastCategory or nextCategory
+*/
+function endCategoriesButtons(id, categoryClassName) {
+  let lastCat = document.getElementById(`${id}`).getElementsByClassName(`${categoryClassName}`);
+  lastCat[0].classList.add("d-none");
 }
 
 /**

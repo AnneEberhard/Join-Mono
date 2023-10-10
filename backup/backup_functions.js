@@ -15,6 +15,32 @@ async function deleteContact(contactNameToDelete) {
  }
 
 
+
+ //changed
+
+ /**
+ * renders the move buttons for mobile version
+ * @param {string} cats - current category of the card
+ * @param {string} id - id of the card
+ */
+function renderMoveBtns(cats, id) {
+  console.log(cats, id);
+  document.getElementById(`${id}`).innerHTML += /*html*/ `
+            <div class="lastCategory" onclick="moveToLastCat(${cats}, ${id}); stopPropagation(event)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg></div>
+            <div class="nextCategory" onclick="moveToNextCat(${cats}, ${id}); stopPropagation(event)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg></div>
+        `;
+  if (cats == "board_container_bottom_todo") {
+    let lastCat = document.getElementById(`${id}`).getElementsByClassName("lastCategory");
+    lastCat[0].classList.add("d-none");
+  }
+
+  if (cats == "board_container_bottom_done") {
+    let lastCat = document.getElementById(`${id}`).getElementsByClassName("nextCategory");
+    lastCat[0].classList.add("d-none");
+  }
+}
+
+
  /**
  * clears the contact container
  * @param {}  - no parameter
