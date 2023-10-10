@@ -71,13 +71,11 @@ function renderEditOverviewTemplate(colorCode, prio, id) {
                 <div id=editTaskContainerSubtasksTasks></div>
                 </div>
             </div>
-        </div>
-    `
+        </div>`;
     disableBackgroundScroll();
 }
 
 /**
- * 
  * @param {*} task 
  * @param {*} idContainer container to render in
  */
@@ -94,7 +92,7 @@ function renderAssignementsInTaskOverview(task, idContainer) {
 }
 
 /**
- * compares if assignedUser is an User in contact List --> creates an IconCircle
+ * compares if assignedUser is an user in contact List --> creates an IconCircle
  * @param {*} assignedUser 
  * @param {*} contact 
  * @param {*} idContainer 
@@ -130,7 +128,6 @@ async function renderSubtasksInTaskOverview(id) {
             renderSubtasksWithHook(s, id);
         }
     }
-    //renderAddSubtasksInOverview(id);
 }
 
 /**
@@ -170,8 +167,7 @@ function renderSubtasksWithHook(index, id) {
             <div class="subtaskInOverview">
                 <div id="checkBoxEdit${id}${index}" class="checkBox hover" onclick="addCheck(${index},${id},'Edit')"><img src="assets/img/done.png"></div>
                 <div>${subTasksArray[index].subTaskName}</div>
-            </div>
-        `
+            </div>`;
 }
 
 
@@ -193,7 +189,6 @@ async function addSubTaskEdit(id) {
     document.getElementById("inputSubtaskEdit").value = "";
 }
 
-
 /**
  * confirm Container if task should be deleted
  * @param {*} id index of task which was clicked 
@@ -206,7 +201,7 @@ function askBeforeDelete(id) {
         <div id="confirmDeleteTaskAnswers">
                 <div id="confirmDeleteTaskAnswersYes" onclick="deleteTaskFinally(${id})">Delete</div>
                 <div id="confirmDeleteTaskAnswersNo" onclick="closeDeleteRequest()">Back</div>
-        </div>`
+        </div>`;
 }
 
 /**
@@ -220,7 +215,6 @@ async function deleteTaskFinally(id) {
     closeEditTask();
     flushSubtasks();
 }
-
 
 /**
  * closes the delete request container 
@@ -239,7 +233,6 @@ function closeEditTask() {
     enableBackgroundScroll();
     document.getElementById('editTask').classList.add('d-none');
     flushSubtasks();
-
 }
 
 /**
@@ -294,13 +287,7 @@ function editModeTemplate(task, id) {
             </div>
             <div id="editTaskDueDate" class="editTaskTitleFixed editTasksWidth80">
                 <div id="editTaskDueDateFixed">Due Date</div>
-                    <input
-                        id="dueDateEdit"
-                        class="inputsAddTask height51 padding hover"
-                        type="date"
-                        required
-                        value="${task['dueDate']}"       
-                        />
+                    <input id="dueDateEdit" class="inputsAddTask height51 padding hover" type="date"required value="${task['dueDate']}" />
             </div> 
             <div id="editTaskPrio" class="editTaskTitleFixed editTasksWidth80">
                 <div id="editTaskPrioFixed">Priority</div>
@@ -327,7 +314,6 @@ function editModeTemplate(task, id) {
 </form>`;
     return editModeTemplate;
 }
-
 
 /** 
  * this function assigns the clicked-on priority to the global variable assignedPrio or unassigns it at the 2nd click
@@ -363,7 +349,6 @@ function renderContactsAssignContacts(assContacts) {
     }
     updateAssignedContacts(); //Array with assignedContacts loaded and avoid alert 
 }
-
 
 /**
  * save edited Task, close EditMode and render board
@@ -408,7 +393,6 @@ async function saveBoard(id) {
 
 /**
   * this function checks if a priority is assigned to task and writes an alert otherwise
-  * @param - no param
 */
 function checkEditedPrio() {
     if (typeof prioToEdit !== 'undefined' && prioToEdit !== null && prioToEdit !== '') {
@@ -417,29 +401,3 @@ function checkEditedPrio() {
      document.getElementById(`prioAlertEdit`).innerHTML ='Please select a priority!';
     }
   }
-
-  /**
-  * this function prevents background scroll
-  * @param - no param
-*/
-function preventBackgroundScroll() {
-        document.getElementById('board').style.overflow = 'hidden'; 
-}
-
-  /**
-  * this function enables background scroll
-  * @param - no param
-*/
-function enableBackgroundScroll() {
-    document.getElementById('board').style.overflow = ''; 
-}
-
-  /**
-  * this function disables background scroll
-  * @param - no param
-*/
-function disableBackgroundScroll() {
-        preventBackgroundScroll();
-}
-
-
