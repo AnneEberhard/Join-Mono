@@ -3,7 +3,6 @@ let currentDraggedElement;
 
 /**
  * initialized rendering of board
- * @param - no parameter
  */
 async function renderBoard() {
   await renderBoardCards();
@@ -11,7 +10,6 @@ async function renderBoard() {
 
 /**
  * load alle data from backend, delete tasks columns and build new Cards out of loaded Datas
- * @param - no parameter
  */
 async function renderBoardCards() {
   await loadItems();
@@ -24,13 +22,11 @@ async function renderBoardCards() {
 
 /**
  * delete tasks columns when refreshing Board
- * @param - no parameter
  */
 async function deleteBoard() {
   document.getElementById("board_container_bottom_todo").innerHTML = "";
   document.getElementById("board_container_bottom_inprogress").innerHTML = "";
-  document.getElementById("board_container_bottom_awaitingfeedback").innerHTML =
-    "";
+  document.getElementById("board_container_bottom_awaitingfeedback").innerHTML = "";
   document.getElementById("board_container_bottom_done").innerHTML = "";
 }
 
@@ -49,16 +45,7 @@ async function createBoardCard(id) {
   let cats = task["column"];
   let subtaskCard = task["subtasks"];
   let idContainerAssignements = `board_icons_username${id}`;
-
-  renderBoardCard(
-    categoryCard,
-    titleCard,
-    descriptionCard,
-    id,
-    prioCard,
-    cats,
-    categoryColorCode
-  );
+  renderBoardCard(categoryCard, titleCard, descriptionCard, id, prioCard, cats, categoryColorCode);
   if (subtaskCard.length > 0) {
     createProgressbar(subtaskCard, id);
   }
@@ -66,7 +53,6 @@ async function createBoardCard(id) {
 }
 
 /**
- *
  * @param {} category passes category of the task
  * @returns Background color for the category
  */
@@ -122,33 +108,6 @@ function templateBoardTodo(categoryCard,titleCard,descriptionCard, ID,prioCard,c
   return templateBoardTodo;
 }
 
-/**
- * renders the move buttons for mobile version
- * @param {string} cats - current category of the card
- * @param {string} id - id of the card
- */
-function renderMoveBtns(cats, id) {
-  document.getElementById(`${id}`).innerHTML += /*html*/ `
-            <div class="lastCategory" onclick="moveToLastCat(${cats}, ${id}); stopPropagation(event)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 14l5-5 5 5H7z"/></svg></div>
-            <div class="nextCategory" onclick="moveToNextCat(${cats}, ${id}); stopPropagation(event)"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7 10l5 5 5-5H7z"/></svg></div>
-        `;
-  if (cats == "board_container_bottom_todo") {
-    endCategoriesButtons(id,"lastCategory");
-  }
-  if (cats == "board_container_bottom_done") {
-    endCategoriesButtons(id,"nextCategory");
-  }
-}
-
-/**
- * hides the move buttons for mobile version at the respective end categories done and todo
- * @param {string} id - id of the card
- * @param {string} categoryClassName - either lastCategory or nextCategory
-*/
-function endCategoriesButtons(id, categoryClassName) {
-  let lastCat = document.getElementById(`${id}`).getElementsByClassName(`${categoryClassName}`);
-  lastCat[0].classList.add("d-none");
-}
 
 /**
  * stops passing on click
@@ -204,7 +163,6 @@ function createProgressbar(subtaskCard, id) {
   let done = countDoneSubtasks(subtaskCard);
   let percentDoneTasks = done / tasksNumber;
   let filledprogressbar = 138 * percentDoneTasks;
-
   renderProgressBar(filledprogressbar, id);
   renderProgressText(done, tasksNumber, id);
 }
@@ -249,14 +207,12 @@ function renderProgressText(doneTasksNumber, tasksNumber, id) {
 }
 
 /**
- *
  * @param {*} assignedCard passes Array with names of the editors of the task
  * @param {*} id   passes id of the boardcard
  */
 function createAssignmentIcons(assignedCard, idContainer) {
   for (let i = 0; i < assignedCard.length; i++) {
     const assignedUser = assignedCard[i].user_name;
-
     if (i < 5) {
       for (let k = 0; k < contacts.length; k++) {
         const contact = contacts[k];
@@ -286,7 +242,6 @@ function renderAssignmentIcons(assignedUser, contact, idContainer) {
 }
 
 /**
- *
  * @param {*} assignedUser User who is working on the task
  * @returns color of the user in contact list
  */
@@ -301,27 +256,10 @@ function getColor(assignedUser) {
 
 /**
  * searching function, to show task who hast the searched word in title
- * @param {}  - no param
  */
 function searchTasksOnBoard() {
   let searchedTask = document.getElementById("board_input").value.toUpperCase();
-  let searchingElements = document.getElementsByClassName(
-    "board_task_container_title"
-  );
-  searchTask(searchedTask,searchingElements);
-}
-
-/**
- * searching function for the mobile version, to show task who hast the searched word in title
- * @param {}  - no param
- */
-function searchTasksOnBoardMobile() {
-  let searchedTask = document
-    .getElementById("board_input_mobile")
-    .value.toUpperCase();
-  let searchingElements = document.getElementsByClassName(
-    "board_task_container_title"
-  );
+  let searchingElements = document.getElementsByClassName("board_task_container_title");
   searchTask(searchedTask,searchingElements);
 }
 
@@ -335,20 +273,15 @@ function searchTask(searchedTask,searchingElements) {
     let title = searchingElements[p];
     searchValue = title.textContent || title.innerText;
     if (searchValue.toUpperCase().indexOf(searchedTask) > -1) {
-      searchingElements[
-        p
-      ].parentElement.parentElement.parentElement.style.display = "flex";
+      searchingElements[p].parentElement.parentElement.parentElement.style.display = "flex";
     } else {
-      searchingElements[
-        p
-      ].parentElement.parentElement.parentElement.style.display = "none";
+      searchingElements[p].parentElement.parentElement.parentElement.style.display = "none";
     }
   }
 }
 
 /**
  * identifies dragged element
- * @param {}  - no param
  */
 function startDragging(id) {
   currentDraggedElement = id;
@@ -356,7 +289,6 @@ function startDragging(id) {
 
 /**
  * allows drop in drag and drop
- * @param {}  - no param
  */
 function allowDrop(ev) {
   ev.preventDefault();
@@ -409,7 +341,6 @@ function removeHighlight(event) {
 
 /**
  * add "NoTasks Container" to empty columns
- * @param {}  - no param
  */
 function fillEmptyColumns() {
   let columnsToCheck = [
@@ -422,15 +353,12 @@ function fillEmptyColumns() {
     const column = columnsToCheck[c];
     let isEmpty = isDivEmpty(column);
     if (isEmpty) {
-      document.getElementById(column).innerHTML = /*html*/ `
-                <div class="emptyColumnContainer">No Tasks</div>
-            `;
+      document.getElementById(column).innerHTML = /*html*/ `<div class="emptyColumnContainer">No Tasks</div>`;
     }
   }
 }
 
 /**
- *
  * @param {*} checkedColumn
  * @returns true if div is empty or undefined is
  */
@@ -439,30 +367,3 @@ function isDivEmpty(checkedColumn) {
   return !div || div.innerHTML.trim() === "";
 }
 
-/**
- *
- * @returns breakpoint, when screen is in mobile Modus
- */
-function isMobileDevice() {
-  return window.innerWidth < 900;
-}
-
-/**
- * Eventlistner to render board if screen changes between desktop and MobileMode
- */
-window.addEventListener("resize", handleScreenResize);
-
-/**
- * to handle screen resizing
- * @param {}  - no param
- */
-function handleScreenResize() {
-  if (window.innerWidth < 900 && window.location.pathname === "/board.html") {
-    renderBoard();
-  } else if (
-    window.innerWidth >= 900 &&
-    window.location.pathname === "/board.html"
-  ) {
-    renderBoard();
-  }
-}
