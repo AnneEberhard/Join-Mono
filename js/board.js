@@ -308,20 +308,7 @@ function searchTasksOnBoard() {
   let searchingElements = document.getElementsByClassName(
     "board_task_container_title"
   );
-
-  for (let p = 0; p < searchingElements.length; p++) {
-    let title = searchingElements[p];
-    searchValue = title.textContent || title.innerText;
-    if (searchValue.toUpperCase().indexOf(searchedTask) > -1) {
-      searchingElements[
-        p
-      ].parentElement.parentElement.parentElement.style.display = "flex";
-    } else {
-      searchingElements[
-        p
-      ].parentElement.parentElement.parentElement.style.display = "none";
-    }
-  }
+  searchTask(searchedTask,searchingElements);
 }
 
 /**
@@ -335,7 +322,15 @@ function searchTasksOnBoardMobile() {
   let searchingElements = document.getElementsByClassName(
     "board_task_container_title"
   );
+  searchTask(searchedTask,searchingElements);
+}
 
+/**
+ * searching function for both version
+ * @param {string} searchedTask - input from the search field
+ * @param {array} searchingElements - array of the task titles
+ */
+function searchTask(searchedTask,searchingElements) {
   for (let p = 0; p < searchingElements.length; p++) {
     let title = searchingElements[p];
     searchValue = title.textContent || title.innerText;

@@ -19,6 +19,58 @@ async function deleteContact(contactNameToDelete) {
  //changed
 
  /**
+ * searching function, to show task who hast the searched word in title
+ * @param {}  - no param
+ */
+function searchTasksOnBoard() {
+  let searchedTask = document.getElementById("board_input").value.toUpperCase();
+  let searchingElements = document.getElementsByClassName(
+    "board_task_container_title"
+  );
+
+  for (let p = 0; p < searchingElements.length; p++) {
+    let title = searchingElements[p];
+    searchValue = title.textContent || title.innerText;
+    if (searchValue.toUpperCase().indexOf(searchedTask) > -1) {
+      searchingElements[
+        p
+      ].parentElement.parentElement.parentElement.style.display = "flex";
+    } else {
+      searchingElements[
+        p
+      ].parentElement.parentElement.parentElement.style.display = "none";
+    }
+  }
+}
+
+/**
+ * searching function for the mobile version, to show task who hast the searched word in title
+ * @param {}  - no param
+ */
+function searchTasksOnBoardMobile() {
+  let searchedTask = document
+    .getElementById("board_input_mobile")
+    .value.toUpperCase();
+  let searchingElements = document.getElementsByClassName(
+    "board_task_container_title"
+  );
+
+  for (let p = 0; p < searchingElements.length; p++) {
+    let title = searchingElements[p];
+    searchValue = title.textContent || title.innerText;
+    if (searchValue.toUpperCase().indexOf(searchedTask) > -1) {
+      searchingElements[
+        p
+      ].parentElement.parentElement.parentElement.style.display = "flex";
+    } else {
+      searchingElements[
+        p
+      ].parentElement.parentElement.parentElement.style.display = "none";
+    }
+  }
+}
+
+ /**
  * renders the move buttons for mobile version
  * @param {string} cats - current category of the card
  * @param {string} id - id of the card
