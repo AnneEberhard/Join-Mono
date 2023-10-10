@@ -34,25 +34,30 @@ async function includeHTML() {
 
 
 /**
- * function will highlight the active category on sidebar
+ * function will start highlight the active category on sidebar
  * @param {string} categoryName - gives the last string-part of the ID conatainer
  */
 async function showCategory(categoryName) {
-    if (categoryName === "legal_notice" || categoryName === "privacy_policy") {
-        document.getElementById("sidebar_categories").classList.add("d-none");
-      } else if (categoryName != "help") {
-    document.getElementById("sidebar_categories").classList.remove("d-none");
-    let allCategories = document.getElementsByClassName("active_category");
-    if (allCategories.length != 0) {
-      for (let i = 0; i < allCategories.length; i++) {
-        const element = allCategories[i];
+  if (categoryName === "legal_notice" || categoryName === "privacy_policy") {
+      document.getElementById("sidebar_categories").classList.add("d-none");
+  } else if (categoryName !== "help") {
+    highlightCategory(categoryName);
+  }
+}
 
-        element.classList.remove("active_category");
+async function highlightCategory(categoryName) {
+  document.getElementById("sidebar_categories").classList.remove("d-none");
+  let allCategories = document.getElementsByClassName("active_category");
+  if (allCategories.length !== 0) {
+      for (let i = 0; i < allCategories.length; i++) {
+          const element = allCategories[i];
+          element.classList.remove("active_category");
       }
-    }
-    let string = "sidebar_categories_" + categoryName;
-    let addCat = document.getElementById(string);
-    addCat.classList.add("active_category");
+  }
+  let string = "sidebar_categories_" + categoryName;
+  let addCat = document.getElementById(string);
+  if (addCat !== null) {
+      addCat.classList.add("active_category");
   }
 }
 
