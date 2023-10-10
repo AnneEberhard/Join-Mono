@@ -71,9 +71,10 @@ function determineColorCategory(category) {
  * renders a taskCard
  * @param {*} attributes passes attributes of the task to create the template of this taskCard
  */
-function renderBoardCard(categoryCard,titleCard,descriptionCard, ID,prioCard,cats,categoryColorCode) {
+function renderBoardCard(categoryCard,titleCard,descriptionCard,ID,prioCard,cats,categoryColorCode) {
   let board_todo = document.getElementById(`${cats}`);
-  board_todo.innerHTML += templateBoardTodo(categoryCard,titleCard,descriptionCard, ID,prioCard,categoryColorCode);
+  console.log(cats);
+  board_todo.innerHTML += templateBoardTodo(categoryCard,titleCard,descriptionCard,ID,prioCard,categoryColorCode);
   if (isMobileDevice()) {
     renderMoveBtns(cats, ID);
   }
