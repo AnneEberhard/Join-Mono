@@ -347,7 +347,6 @@ function renderContactsAssignContacts(assContacts) {
             }
         }
     }
-    updateAssignedContacts(); //Array with assignedContacts loaded and avoid alert 
 }
 
 /**

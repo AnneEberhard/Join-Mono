@@ -151,7 +151,7 @@ function checkContact(i, mode) {
   } else {
     assignContact(i, mode);
   }
-  updateAssignedContacts();
+  updateAssignedContacts(mode);
 }
 
 
@@ -184,9 +184,9 @@ function unassignContact(i, mode) {
 
 /**
  * this function adds assigned contacts to the global array assignedContacts
- * @param - no parameter
+ * @param {string} mode - mode of either add or edit
  */
-function updateAssignedContacts() {
+function updateAssignedContacts(mode) {
   assignedContacts = [];
   document.getElementById('contactAlert').innerHTML = '';
   for (let i = 0; i < assignedContactsStatus.length; i++) {
@@ -196,15 +196,20 @@ function updateAssignedContacts() {
       assignedContacts.push(contact);
     }
   }
-  displayAssignedContact();
+  displayAssignedContact(mode);
 }
 
 /**
  * this function adds the assigned contact in color circles
- * @param - no parameter
+ * @param {string} mode - mode of either add or edit
  */
-function displayAssignedContact() {
-  const displaySelectedContacts = document.getElementById('displaySelectedContacts');
+function displayAssignedContact(mode) {
+  let displaySelectedContacts;
+  if (mode =='Add') {
+    displaySelectedContacts = document.getElementById('displaySelectedContacts');
+  } else if (mode =='Edit') {
+    displaySelectedContacts = document.getElementById('editTaskAssignedChangable');
+  }
   displaySelectedContacts.innerHTML = '';
   for (let i = 0; i < assignedContacts.length; i++) {
     const contactAcronym = assignedContacts[i].acronym;
