@@ -189,7 +189,19 @@ body{
     display: flex;
 }
 
+@media (max-width: 400px) {
 
+    .category_img {
+      width: 20px;
+      justify-content: center;
+  }
+  
+  .mobileCategory_line {
+      height: 70px;
+      width: 70px;
+      font-size: 12px;
+  }
+  }
 
 
 
