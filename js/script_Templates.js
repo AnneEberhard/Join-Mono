@@ -79,7 +79,9 @@ async function showMobileCategory(categoryName) {
   }
   let string = "mobile_categories_" + categoryName;
   let addCat = document.getElementById(string);
+  if (addCat !== null) {
   addCat.classList.add("active_category");
+}
 }
 
 
