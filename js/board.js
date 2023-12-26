@@ -73,7 +73,9 @@ function determineColorCategory(category) {
  */
 function renderBoardCard(categoryCard,titleCard,descriptionCard,ID,prioCard,cats,categoryColorCode) {
   let board_todo = document.getElementById(`${cats}`);
-  board_todo.innerHTML += templateBoardTodo(categoryCard,titleCard,descriptionCard,ID,prioCard,categoryColorCode);
+  if (cats) {
+    board_todo.innerHTML += templateBoardTodo(categoryCard,titleCard,descriptionCard,ID,prioCard,categoryColorCode);
+  } else { deleteTask(ID) }
   if (isMobileDevice()) {
     renderMoveBtns(cats, ID);
   }
